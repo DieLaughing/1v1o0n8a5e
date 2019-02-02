@@ -1,7 +1,8 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { projectList } from './projectList'
+//import { projectList } from './projectList'
 import TodoList from './TodoList'
+import Colorwheel from './Colorwheel'
 
 export default [
   {
@@ -33,7 +34,7 @@ export default [
     id: 3,
     path: '/projects',
     sidebar: 'Projects',
-    main: () => projectList(),
+    main: () => Colorwheel(),
   },
   {
     id: 4,
