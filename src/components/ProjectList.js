@@ -1,5 +1,5 @@
 import List from './List'
 
-export function projectList() {
+export function ProjectList() {
   return List(5)
 }
