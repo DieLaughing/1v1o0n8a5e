@@ -1,6 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import ColorWheel from '../components/ColorWheel'
+import AdobePicker from '../components/AdobePicker'
+import TodoForm from '../components/TodoForm'
 import TodoList from '../components/TodoList'
 import List from '../components/List'
 
@@ -28,7 +29,12 @@ export default [
     id: 2,
     path: '/todo',
     sidebar: 'Todo',
-    main: () => (<TodoList/>),
+    main: () => (
+      <React.Fragment>
+        <TodoForm/>
+        <TodoList/>
+      </React.Fragment>
+    ),
   },
   {
     id: 3,
@@ -40,7 +46,7 @@ export default [
     id: 4,
     path: '/color',
     sidebar: 'Color',
-    main: () => <ColorWheel />,
+    main: () => <AdobePicker />,
   },
   {
     id: 5,

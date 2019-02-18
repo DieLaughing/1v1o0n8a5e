@@ -1,17 +1,25 @@
 import React from 'react'
-import { Box, Text } from 'grommet'
+import { Box, Button, CheckBox, Text } from 'grommet'
 
-const TodoList = props => {
+const TodoList = ({ todos, deleteTodo }) => {
   return (
-    <Box fill pad="xlarge" background="bg_navy">
-      <Text color="white">Stacks, Bitch!</Text>
-      <Box pad="small" background="bg_blue">
-        <Text color="red">Fuckin' Small Box, Man!</Text>
-      </Box>
-      <Box pad="small" background="bg_yellow">
-        <Text color="red">Stacks on</Text>
-      </Box>
-    </Box>
+    <div align="center">
+      {
+        todos => {
+          todos.map((todo, index) => (
+            <Box pad="large" background="#1b1b25">
+              <CheckBox tabIndex={-1} />
+              <Box pad="small" background="whitesmoke">
+                <Text>{todo}</Text>
+              </Box>
+              <Button aria-label="Delete"
+                onClick={() => {
+                  deleteTodo(index)
+                }}>🗑</Button>
+            </Box>
+          ))}
+      }
+    </div>
   )
 }
 

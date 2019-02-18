@@ -108,7 +108,7 @@ const markActive = (match, location) => {
 }
 
 function App() {
-  const [sidebarDocked, setSidebarDocked] = useState(true)
+  const [sidebarDocked, setSidebarDocked] = useState(false)
   const [open, setSidebarOpen] = useState(false)
   const name = useFormInput('1v1o0n8a5e')
   const size = useWindowSize()
