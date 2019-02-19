@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Marker from './Marker'
-//import Colorwheel from './Colorwheel'
+import Colorwheel from './Colorwheel'
 
 class AdobePicker extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class AdobePicker extends Component {
         height: '436px',
         overflow: 'visible'
       }}>
-      <img src='./color_wheel.webp' alt='colorwheel' style={{width: '430px', borderRadius: '215px'}} />
+        <Colorwheel />
         <Marker x={this.state.x} y={this.state.y} offset={{top: 172, left: 465}} />
       </div>
     )
