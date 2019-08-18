@@ -65,7 +65,7 @@ const Button = styled.button`
   ${color}
 `
 
-const AppName = styled.input`
+const SearchField = styled.input`
   font-family: 'Aldrich', sans-serif;
   font-size: 4rem;
   text-align: left;
@@ -165,7 +165,7 @@ function App() {
                   🌒
                 </span>
               </Button>
-              <AppName {...name} className='text-pulse' width={nameWidth} spellCheck='false' />
+              <SearchField {...name} className='text-pulse' width={nameWidth} spellCheck='false' />
             </AppTitle>
           </AppHeader>
           <AppBody>
