@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 const getItems = count =>
   Array.from({ length: count }, (v, k) => k).map(k => ({
     id: `${k}`,
-    content: `item-${k}`,
+    value: `item-${k}`,
   }))
 
 // a little function to help us with reordering the result
@@ -41,10 +41,11 @@ const getListStyle = isDraggingOver => ({
 
 const List = (order) => {
   const [ state, setState ] = useState({
-    items: getItems(order),
+    items: order, //getItems(order)
   })
 
   const onDragEnd = (result) => {
+
     // dropped outside the list
     if (!result.destination) {
       return
@@ -81,7 +82,7 @@ const List = (order) => {
                       provided.draggableProps.style
                     )}
                   >
-                    {item.content}
+                    {item.value}
                   </div>
                 )}
               </Draggable>

@@ -5,6 +5,8 @@ import TodoForm from '../components/TodoForm'
 import TodoList from '../components/TodoList'
 import List from '../components/List'
 
+const items = [{id:0,value: 'zero'},{id:1, value: 'one'},{id:2, value: 'two'},{id:3, value: 'three'},{id:4, value: 'four'},{id:5, value: 'five'},{id:6, value: 'six'},]
+
 export default [
   {
     id: 0,
@@ -40,7 +42,7 @@ export default [
     id: 3,
     path: '/projects',
     sidebar: 'Projects',
-    main: () => List(8),
+    main: () => List(items),
   },
   {
     id: 4,

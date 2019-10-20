@@ -103,16 +103,28 @@ const markActive = (match, location) => {
   if (!match) {
     return false
   }
-  console.log(JSON.stringify(location))
   return true
 }
 
-function App() {
+const useStateWithLocalStorage = localStorageKey => {
+  const [value, setValue] = React.useState(
+    localStorage.getItem(localStorageKey) || ''
+  )
+  React.useEffect(() => {
+    localStorage.setItem(localStorageKey, value)
+  }, [value])
+  return [value, setValue]
+}
+
+const App = () => {
   const [sidebarDocked, setSidebarDocked] = useState(false)
   const [open, setSidebarOpen] = useState(false)
   const name = useFormInput('1v1o0n8a5e')
   const size = useWindowSize()
   const nameWidth = (size.width - (size.width/2)) + 'px'
+  const [value, setValue] = useStateWithLocalStorage('SearchFieldValue')
+  const onChange = event => setValue(event.target.value)
+
   useDocumentTitle(name.value)
 
   function onSetSidebarDocked(dock) {
@@ -165,7 +177,7 @@ function App() {
                   🌒
                 </span>
               </Button>
-              <SearchField {...name} className='text-pulse' width={nameWidth} spellCheck='false' />
+              <SearchField {...name} value={value} onChange={onChange} className='text-pulse' width={nameWidth} spellCheck='false' />
             </AppTitle>
           </AppHeader>
           <AppBody>
@@ -178,4 +190,5 @@ function App() {
     </Grommet>
   )
 }
+
 export default App
