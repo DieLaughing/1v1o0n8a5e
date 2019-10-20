@@ -3,11 +3,11 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import PropTypes from 'prop-types'
 
 // fake data generator
-const getItems = count =>
+/*const getItems = count =>
   Array.from({ length: count }, (v, k) => k).map(k => ({
     id: `${k}`,
     value: `item-${k}`,
-  }))
+  }))*/
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -41,7 +41,7 @@ const getListStyle = isDraggingOver => ({
 
 const List = (order) => {
   const [ state, setState ] = useState({
-    items: order, //getItems(order)
+    items: Array.from(order), //getItems(order)
   })
 
   const onDragEnd = (result) => {
