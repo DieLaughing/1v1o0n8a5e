@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button, CheckBox, Text } from 'grommet'
 
-const TodoList = ({ todos, deleteTodo }) => {
+const TodoList = ({ todos = [], deleteTodo }) => {
   return (
     <div align="center">
       {

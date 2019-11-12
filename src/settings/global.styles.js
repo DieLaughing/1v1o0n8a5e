@@ -60,4 +60,7 @@ export default css`
   user-select: none; /* Non-prefixed version, currently
                         supported by Chrome and Opera */
 }
+button::-moz-focus-inner {
+  border:0;
+}
 `

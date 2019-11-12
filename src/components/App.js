@@ -107,11 +107,12 @@ const markActive = (match, location) => {
 }
 
 const useStateWithLocalStorage = localStorageKey => {
-  const [value, setValue] = React.useState(
+  const [value, setValue] = useState(
     localStorage.getItem(localStorageKey) || ''
   )
-  React.useEffect(() => {
+  useEffect(() => {
     localStorage.setItem(localStorageKey, value)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
   return [value, setValue]
 }
@@ -121,11 +122,12 @@ const App = () => {
   const [open, setSidebarOpen] = useState(false)
   const name = useFormInput('1v1o0n8a5e')
   const size = useWindowSize()
-  const nameWidth = (size.width - (size.width/2)) + 'px'
   const [value, setValue] = useStateWithLocalStorage('SearchFieldValue')
+  useDocumentTitle(value)
+  
+  const nameWidth = (size.width - (size.width/2)) + 'px'
   const onChange = event => setValue(event.target.value)
-
-  useDocumentTitle(name.value)
+    
 
   function onSetSidebarDocked(dock) {
     setSidebarDocked(dock)
@@ -177,7 +179,7 @@ const App = () => {
                   🌒
                 </span>
               </Button>
-              <SearchField {...name} value={value} onChange={onChange} className='text-pulse' width={nameWidth} spellCheck='false' />
+              <SearchField name={name.value} value={value} onChange={onChange} className='text-pulse' width={nameWidth} spellCheck='false' />
             </AppTitle>
           </AppHeader>
           <AppBody>

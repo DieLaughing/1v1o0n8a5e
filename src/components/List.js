@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import PropTypes from 'prop-types'
 
 // fake data generator
 /*const getItems = count =>
@@ -9,15 +8,19 @@ import PropTypes from 'prop-types'
     value: `item-${k}`,
   }))*/
 
+const projects = [{id:1, content: 'one'},{id:2, content: 'two'},{id:3, content: 'three'},{id:4, content: 'four'},{id:5, content: 'five'},{id:6, content: 'six'},{id:7, content: 'seven'},{id:8, content: 'eight'}]
+
+
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list)
   const [removed] = result.splice(startIndex, 1)
   result.splice(endIndex, 0, removed)
+  
   return result
 }
 
-const grid = 8
+const grid = projects.length - 1
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   userSelect: 'none',
@@ -27,6 +30,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   background: isDragging ? '#1b1b25' : '#17171f',
   color: isDragging ? '#7FDBFF' : '#007BE6',
   transition: 'color .2s',
+  // eslint-disable-next-line
   ...draggableStyle,
 })
 
@@ -39,25 +43,44 @@ const getListStyle = isDraggingOver => ({
   overflow: 'auto'
 })
 
-const List = (order) => {
-  const [ state, setState ] = useState({
-    items: Array.from(order), //getItems(order)
-  })
+const useStateWithLocalStorage = localStorageKey => {
+  const [value, setValue] = useState(
+    localStorage.getItem(localStorageKey) || ''
+  )
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, value)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value])
+  return [value, setValue]
+}
+
+const List = () => {
+  
+  const [ value, setValue ] = useStateWithLocalStorage('ProjectList')
+  const [ state, setState ] = useState({items: projects})
+
+  if(value !== null && value !== state) {
+    setState(value)
+  }
 
   const onDragEnd = (result) => {
-
+    
     // dropped outside the list
     if (!result.destination) {
       return
     }
-   
+    
     const items = reorder(
       state.items,
       result.source.index,
       result.destination.index
     )
-     
+
     setState({
+      items,
+    })
+
+    setValue({
       items,
     })
   }
@@ -82,7 +105,7 @@ const List = (order) => {
                       provided.draggableProps.style
                     )}
                   >
-                    {item.value}
+                    {item.content}
                   </div>
                 )}
               </Draggable>
@@ -93,10 +116,6 @@ const List = (order) => {
       </Droppable>
     </DragDropContext>
   )
-}
-
-List.propTypes = {
-  order: PropTypes.number.isRequired
 }
 
 export default List

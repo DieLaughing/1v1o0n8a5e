@@ -1,21 +1,21 @@
 {
   "name": "1v1o0n8a5e",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "dependencies": {
-    "chroma-js": "^2.0.2",
-    "constate": "^1.0.0",
-    "grommet": "^2.2.1",
-    "htm": "^2.0.0",
-    "react": "^16.8.0",
-    "react-beautiful-dnd": "^10.0.3",
-    "react-dom": "^16.8.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "2.1.2",
-    "react-sidebar": "^3.0.2",
+    "chroma-js": "^2.0.6",
+    "constate": "^1.3.2",
+    "grommet": "^2.7.10",
+    "htm": "^2.2.1",
+    "react": "^0.0.0-experimental-f6b8d31a7",
+    "react-beautiful-dnd": "^11.0.5",
+    "react-dom": "^0.0.0-experimental-f6b8d31a7",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "react-sidebar": "^2.3.0",
     "react-sizeme": "^2.5.2",
-    "styled-components": "^4.1.3",
-    "styled-system": "^3.1.11"
+    "styled-components": "^4.4.0",
+    "styled-system": "^5.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,9 +33,12 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.10.0"
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-styled-components": "^1.10.6",
+    "eslint": "^6.6.0",
+    "eslint-plugin-react-hooks": "^2.1.2"
   },
   "resolutions": {
-    "ajv": "6.8.1"
+    "ajv": "6.10.2"
   }
 }

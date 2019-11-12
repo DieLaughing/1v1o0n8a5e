@@ -3,19 +3,18 @@ import { Redirect } from 'react-router-dom'
 import AdobePicker from '../components/AdobePicker'
 import TodoForm from '../components/TodoForm'
 import TodoList from '../components/TodoList'
-import List from '../components/List'
-
-const items = [{id:0,value: 'zero'},{id:1, value: 'one'},{id:2, value: 'two'},{id:3, value: 'three'},{id:4, value: 'four'},{id:5, value: 'five'},{id:6, value: 'six'},{id:7, value: 'seven'}]
+import DropList from '../components/DropList'
+//import List from '../components/List'
 
 export default [
   {
-    id: 0,
+    id: 1,
     path: '/',
     exact: true,
     main: () => (<Redirect to='/home' />),
   },
   {
-    id: 1,
+    id: 2,
     path: '/home',
     exact: true,
     sidebar: 'Home',
@@ -23,12 +22,12 @@ export default [
       <div>
         <h1 style={{ fontFamily: 'Electrolize', fontSize: '1.85em' }}>Home</h1>
         <br />
-        Test test here. This is the Home page.
+        This is the Home page. There are other pages like it, but this is the Home page.
       </div>
     ),
   },
   {
-    id: 2,
+    id: 3,
     path: '/todo',
     sidebar: 'Todo',
     main: () => (
@@ -39,19 +38,19 @@ export default [
     ),
   },
   {
-    id: 3,
+    id: 4,
     path: '/projects',
     sidebar: 'Projects',
-    main: () => List(items),
+    main: () => DropList(),
   },
   {
-    id: 4,
+    id: 5,
     path: '/color',
     sidebar: 'Color',
     main: () => <AdobePicker />,
   },
   {
-    id: 5,
+    id: 6,
     path: '/about',
     sidebar: 'About',
     main: () => (

@@ -5,7 +5,9 @@
         "node": true
     },
     "extends": "eslint:recommended",
+    "parser": "babel-eslint",
     "parserOptions": {
+        "ecmaVersion": 6,
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
             "jsx": true
@@ -13,9 +15,13 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
-    ],
-    "rules": {
+        "react",
+        "react-hooks"
+      ],
+      "rules": {
+        // ...
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
         "indent": [
             "error",
             2
