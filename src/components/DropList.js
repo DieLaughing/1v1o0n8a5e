@@ -47,7 +47,7 @@ const DropList = () => {
   const lsKey = 'ProjectList'
   let items = {items:[{id:'1', content: 'one'},{id:'2', content: 'two'},{id:'3', content: 'three'},{id:'4', content: 'four'},{id:'5', content: 'five'},{id:'6', content: 'six'},{id:'7', content: 'seven'},{id:'8', content: 'eight'},{id:'9', content: 'nine'}]}
 
-  const [ value, setValue ] = useState(items)
+  const [ value, setValue ] = useState(JSON.parse(localStorage.getItem(lsKey)) || items)
     
     useEffect(() => {
       const data = localStorage.getItem(lsKey)
