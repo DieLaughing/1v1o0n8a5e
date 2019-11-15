@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-// fake data generator
+// fake data generator to show data shape
+// Array must not have an id: 0 for react-beautiful-dnd to work
 
 /* const getItems = count =>
 Array.from({ length: count }, (v, k) => k).map(k => ({
@@ -42,11 +43,9 @@ const getListStyle = isDraggingOver => ({
   overflow: 'auto'
 })
 
-const DropList = () => {
-  
-  const lsKey = 'ProjectList'
-  let items = {items:[{id:'1', content: 'one'},{id:'2', content: 'two'},{id:'3', content: 'three'},{id:'4', content: 'four'},{id:'5', content: 'five'},{id:'6', content: 'six'},{id:'7', content: 'seven'},{id:'8', content: 'eight'},{id:'9', content: 'nine'}]}
+const DropList = (lsKey, items) => {
 
+  // Check if data exists, then load it, or use default data.
   const [ value, setValue ] = useState(JSON.parse(localStorage.getItem(lsKey)) || items)
     
     useEffect(() => {
@@ -90,6 +89,7 @@ const DropList = () => {
             ref={provided.innerRef}
             style={getListStyle(snapshot.isDraggingOver)}
           >
+            {/* Must check for value.items existence first or Undefined warning */}
             {value.items && value.items.map((item, index) => (
               <Draggable key={item.id} draggableId={item.id} index={index}>
                 {(provided, snapshot) => (

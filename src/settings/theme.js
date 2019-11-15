@@ -3,6 +3,7 @@ export default {
     colors: {
       /* Branding */
       brand: '#1b1b25',
+      search: '#265C83',
       /* Backgrounds */
       bg_navy: '#001F3F',
       bg_blue: '#0074D9',
@@ -19,7 +20,7 @@ export default {
       bg_maroon: '#85144B',
       bg_white: '#FFFFFF',
       bg_gray: '#AAAAAA',
-      bg_silver: '#DDDDDD',
+      bg_silver: '#6D6D6D',
       bg_black: '#111111',
       /* Colors */
       navy: '#001F3F',
@@ -37,7 +38,7 @@ export default {
       maroon: '#85144B',
       white: '#FFFFFF',
       silver: '#DDDDDD',
-      gray: '#AAAAAA',
+      gray: '#A2AAAA',
       black: '#111111',
       /* Border colors 
    Use with another border utility that sets border-width and style 
@@ -75,7 +76,7 @@ export default {
       fill_purple: '#B10DC9',
       fill_maroon: '#85144B',
       fill_white: '#FFFFFF',
-      fill_gray: '#AAAAAA',
+      fill_gray: '#26262A',
       fill_silver: '#DDDDDD',
       fill_black: '#111111',
       /* Strokes for SVG */

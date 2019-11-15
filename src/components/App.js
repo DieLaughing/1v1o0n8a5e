@@ -9,7 +9,9 @@ import resetStyles from '../settings/reset.styles'
 import globalFonts from '../settings/global.fonts'
 import globalStyles from '../settings/global.styles'
 import useWindowSize from '../hooks/useWindowSize'
-import { Grommet, Box } from 'grommet'
+import useInputState from '../hooks/useInputState'
+import useStateWithLocalStorage from '../hooks/useStateWithLocalStorage'
+//import { Grommet, Box } from 'grommet'
 
 const GlobalStyle = createGlobalStyle`
   ${resetStyles}
@@ -26,7 +28,7 @@ const AppWrapper = styled.div`
 `
 
 const AppHeader = (props) => (
-  <Box
+  <div
     tag='header'
     direction='row'
     align='start'
@@ -70,7 +72,7 @@ const SearchField = styled.input`
   font-size: 4rem;
   text-align: left;
   border: 0;
-  color: #265C83;
+  color: ${theme.global.colors.search}; 
   background-color: transparent;
 `
 
@@ -81,17 +83,6 @@ const SidebarHeader = styled.div`
   min-height: 10vh;
   ${color}
 `
-
-function useFormInput(initialValue) {
-  const [value, setValue] = useState(initialValue)
-  function handleChange(e) {
-    setValue(e.target.value)
-  }
-  return {
-    value,
-    onChange: handleChange,
-  }
-}
 
 function useDocumentTitle(title) {
   useEffect(() => {
@@ -106,21 +97,10 @@ const markActive = (match, location) => {
   return true
 }
 
-const useStateWithLocalStorage = localStorageKey => {
-  const [value, setValue] = useState(
-    localStorage.getItem(localStorageKey) || ''
-  )
-  useEffect(() => {
-    localStorage.setItem(localStorageKey, value)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value])
-  return [value, setValue]
-}
-
 const App = () => {
   const [sidebarDocked, setSidebarDocked] = useState(false)
   const [open, setSidebarOpen] = useState(false)
-  const name = useFormInput('1v1o0n8a5e')
+  const name = useInputState('1v1o0n8a5e')
   const size = useWindowSize()
   const [value, setValue] = useStateWithLocalStorage('SearchFieldValue')
   useDocumentTitle(value)
@@ -138,13 +118,12 @@ const App = () => {
   }
 
   return(
-    <Grommet theme={theme}>
-      <AppWrapper className='App' color='#1b1b25' bg='#6d6d6d'>
+      <AppWrapper className='App' color='brand' bg={theme.global.colors.bg_silver}>
         <GlobalStyle />
         <Sidebar
           sidebar={
             <div style={{
-              textAlign: 'center', margin: '0', paddingTop: '1rem', fontFamily: 'Electrolize', fontSize: '1.5em', background: '#26262a', height: '100vh'
+              textAlign: 'center', margin: '0', paddingTop: '1rem', fontFamily: 'Electrolize', fontSize: '1.5em', background: theme.global.colors.fill_gray, height: '100vh'
             }}>
               <SidebarHeader>
                 v0.1.0
@@ -166,7 +145,7 @@ const App = () => {
               </ul>
             </div>
           }
-          styles={{ sidebar: { top: null, width: '10vw', minWidth: '185px', backgroundColor: '#gray', margin: '0', padding: '0' } }}
+          styles={{ sidebar: { top: null, width: '10vw', minWidth: '185px', backgroundColor: 'gray', margin: '0', padding: '0' } }}
           docked={sidebarDocked}
           open={open}
           onSetOpen={onSetSidebarOpen}
@@ -174,7 +153,7 @@ const App = () => {
         >
           <AppHeader>
             <AppTitle>
-              <Button color='#265C83' onClick={() => onSetSidebarDocked(!sidebarDocked)}>
+              <Button color={theme.global.colors.search} onClick={() => onSetSidebarDocked(!sidebarDocked)}>
                 <span className='logo' role='img' aria-label='Waxing cresent moon' style={{ paddingLeft: '20px', marginRight: '50px' }}>
                   🌒
                 </span>
@@ -189,7 +168,6 @@ const App = () => {
           </AppBody>
         </Sidebar>
       </AppWrapper>
-    </Grommet>
   )
 }
 

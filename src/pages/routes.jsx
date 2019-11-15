@@ -1,10 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import AdobePicker from '../components/AdobePicker'
-import TodoForm from '../components/TodoForm'
-import TodoList from '../components/TodoList'
 import DropList from '../components/DropList'
-//import List from '../components/List'
 
 export default [
   {
@@ -30,18 +27,14 @@ export default [
     id: 3,
     path: '/todo',
     sidebar: 'Todo',
-    main: () => (
-      <React.Fragment>
-        <TodoForm/>
-        <TodoList/>
-      </React.Fragment>
-    ),
+    main: () => <div>A list of To Do's here...</div>,
   },
   {
     id: 4,
     path: '/projects',
     sidebar: 'Projects',
-    main: () => DropList(),
+    main: () => DropList('ProjectList', {items:[{id:'1', content: 'one'},{id:'2', content: 'two'},{id:'3', content: 'three'},{id:'4', content: 'four'},{id:'5', content: 'five'},{id:'6', content: 'six'},{id:'7', content: 'seven'},{id:'8', content: 'eight'},{id:'9', content: 'nine'}]}
+    ),
   },
   {
     id: 5,

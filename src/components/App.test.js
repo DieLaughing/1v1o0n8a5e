@@ -14,5 +14,9 @@ it('renders without crashing', () => {
 })
 
 it('renders the sidebar', () => {
-  // I have no fucking clue what to do here and there isn't a fucking website or video that helps.
+  const div = document.createElement('div')
+  ReactDOM.render(
+    <Sidebar />, div
+  )
+  ReactDOM.unmountComponentAtNode(div)
 })
