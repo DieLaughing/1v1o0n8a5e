@@ -1,0 +1,112 @@
+.todo-app {
+  padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-header {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 900;
+  font-family: "Aldrich", sans-serif;
+  font-size: calc(2.5em + 2vmin);
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.todo-is-completed .checkbox {
+  color: #000;
+  background: #fff;
+}
+
+.todo-is-completed input {
+  text-decoration: line-through;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color .2s ease-in-out;
+  border: 1px solid #fff;
+}
+
+.checkbox:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.checkbox-checked {
+  color: #000;
+  background: #fff;
+}
+@-webkit-keyframes form-pulse {
+  50% {
+    color: #7fdbff;
+  }
+}
+@keyframes form-pulse {
+  50% {
+    color: #7fdbff;
+  }
+}
+.form-pulse {
+  display: inline-block;
+  /*     vertical-align: middle; */
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-animation-name: form-pulse;
+  animation-name: form-pulse;
+  -webkit-animation-duration: 2.25s;
+  animation-duration: 2.25s;
+  /* -webkit-animation-delay: .5s;
+  animation-delay: .5s; */
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  color: #007be6;
+}
+/* ul {
+  list-style: none;
+  padding: 0;
+  line-height: 2rem;
+  width: 500px;
+}
+
+input {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 1.4rem;
+  outline: none;
+  width: 100%;
+}
+*/

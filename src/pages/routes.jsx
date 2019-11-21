@@ -2,6 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import AdobePicker from '../components/AdobePicker'
 import DropList from '../components/DropList'
+import ToDo from '../components/ToDo'
 
 export default [
   {
@@ -27,7 +28,7 @@ export default [
     id: 3,
     path: '/todo',
     sidebar: 'Todo',
-    main: () => <div>A list of To Do's here...</div>,
+    main: () => <ToDo />,
   },
   {
     id: 4,

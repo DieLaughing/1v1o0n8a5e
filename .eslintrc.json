@@ -16,7 +16,8 @@
     },
     "plugins": [
         "react",
-        "react-hooks"
+        "react-hooks",
+        "prettier"
       ],
       "rules": {
         // ...
@@ -39,6 +40,7 @@
             "never"
         ],
         "no-unused-vars": "off",
-        "no-console": "off"
+        "no-console": "off",
+        "prettier/prettier": "error"
     }
 }
