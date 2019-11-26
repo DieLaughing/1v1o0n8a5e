@@ -109,7 +109,8 @@ const SidebarMenu = () => {
                 fontFamily: "Electrolize",
                 fontSize: "1.5em",
                 background: theme.global.colors.fill_gray,
-                height: "100vh"
+                height: "100vh",
+                overflow: "hidden"
               }}
             >
               <SidebarHeader>v0.1.0</SidebarHeader>
@@ -143,7 +144,8 @@ const SidebarMenu = () => {
               minWidth: "185px",
               backgroundColor: theme.global.colors.fill_gray,
               margin: "0",
-              padding: "0"
+              padding: "0",
+              overflow: "hidden"
             }
           }}
           docked={sidebarDocked}

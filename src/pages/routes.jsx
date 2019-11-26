@@ -1,58 +1,105 @@
-import React from 'react'
-import { Redirect } from 'react-router-dom'
-import AdobePicker from '../components/AdobePicker'
-import DropList from '../components/DropList'
-import ToDo from '../components/ToDo'
+import React from "react"
+import { Redirect } from "react-router-dom"
+import AdobePicker from "../components/AdobePicker"
+import DropList from "../components/DropList"
+import ToDo from "../components/ToDo"
+import Mangle from './Mangle'
 
 export default [
   {
     id: 1,
-    path: '/',
+    path: "/",
     exact: true,
-    main: () => (<Redirect to='/home' />),
+    main: () => <Redirect to='/home' />
   },
   {
     id: 2,
-    path: '/home',
+    path: "/home",
     exact: true,
-    sidebar: 'Home',
-    main: () => (  
+    sidebar: "Home",
+    main: () => (
       <div>
-        <h1 style={{ fontFamily: 'Electrolize', fontSize: '1.85em' }}>Home</h1>
+        <h1 style={{ fontFamily: "Electrolize", fontSize: "1.85em" }}>Home</h1>
         <br />
-        This is the Home page. There are other pages like it, but this is the Home page.
+        This is the Home page. There are other pages like it, but this is the
+        Home page.
       </div>
-    ),
+    )
   },
   {
     id: 3,
-    path: '/todo',
-    sidebar: 'Todo',
-    main: () => <ToDo />,
+    path: "/todo",
+    sidebar: "Todo",
+    main: () =>
+      ToDo("ToDoList", {
+        items: [
+          {
+            content: "Make a list",
+            isCompleted: true
+          },
+          {
+            content: "Check it twice",
+            isCompleted: false
+          },
+          {
+            content: "Build a ToDo app in React",
+            isCompleted: false
+          }
+        ]
+      })
   },
   {
     id: 4,
-    path: '/projects',
-    sidebar: 'Projects',
-    main: () => DropList('ProjectList', {items:[{id:'1', content: 'one'},{id:'2', content: 'two'},{id:'3', content: 'three'},{id:'4', content: 'four'},{id:'5', content: 'five'},{id:'6', content: 'six'},{id:'7', content: 'seven'},{id:'8', content: 'eight'},{id:'9', content: 'nine'}]}
-    ),
+    path: "/projects",
+    sidebar: "Projects",
+    main: () =>
+      DropList("ProjectList", {
+        items: [
+          { id: 1, content: "one" },
+          { id: 2, content: "two" },
+          { id: 3, content: "three" },
+          { id: 4, content: "four" },
+          { id: 5, content: "five" },
+          { id: 6, content: "six" },
+          { id: 7, content: "seven" },
+          { id: 8, content: "eight" },
+          { id: 9, content: "nine" }
+        ]
+      })
   },
   {
     id: 5,
-    path: '/color',
-    sidebar: 'Color',
-    main: () => <AdobePicker />,
+    path: "/color",
+    sidebar: "Color",
+    main: () => <AdobePicker />
   },
   {
     id: 6,
-    path: '/about',
-    sidebar: 'About',
+    path: "/about",
+    sidebar: "About",
     main: () => (
       <div>
-        <h1 style={{ fontFamily: 'Electrolize', fontSize: '1.85em' }}>About</h1>
+        <h1 style={{ fontFamily: "Electrolize", fontSize: "1.85em" }}>About</h1>
         <br />
         More blank pages. This is the 'About J. Adam Moore' page.
       </div>
-    ),
+    )
   },
+  {
+    id: 7,
+    path: "/mangle",
+    sidebar: "Mangle",
+    main: () => Mangle("MangleList", {
+      items: [
+        { id: 1, content: "one" },
+        { id: 2, content: "two" },
+        { id: 3, content: "three" },
+        { id: 4, content: "four" },
+        { id: 5, content: "five" },
+        { id: 6, content: "six" },
+        { id: 7, content: "seven" },
+        { id: 8, content: "eight" }
+      ]
+    })
+  }
 ]
