@@ -4,7 +4,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 // fake data generator to show data shape
 // Array must not have an id: 0 for react-beautiful-dnd to work
 
-/* const getItems = count =>
+/* const getents = count =>
 Array.from({ length: count }, (v, k) => k).map(k => ({
   id: `${k+1}`,
   content: `item-${k+1}`,
@@ -43,10 +43,10 @@ const getListStyle = isDraggingOver => ({
   overflow: 'auto'
 })
 
-const DropList = (lsKey, items) => {
+const DropList = (lsKey, ents) => {
 
   // Check if data exists, then load it, or use default data.
-  const [ value, setValue ] = useState(JSON.parse(localStorage.getItem(lsKey)) || items)
+  const [ value, setValue ] = useState(JSON.parse(localStorage.getItem(lsKey)) || ents)
     
     useEffect(() => {
       const data = localStorage.getItem(lsKey)
@@ -57,7 +57,7 @@ const DropList = (lsKey, items) => {
     },[])
 
   useEffect(() => {
-    localStorage.setItem(lsKey, JSON.stringify(value))
+    localStorage.setItem(lsKey, JSON.stringify({ents: Array.from(value.ents)}))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value])
 
@@ -69,14 +69,14 @@ const DropList = (lsKey, items) => {
       return
     }
     
-    items = reorder(
-      value.items,
+    ents = reorder(
+      value.ents,
       result.source.index,
       result.destination.index
     )
 
     setValue({
-      items,
+      ents,
     })
 
   }
@@ -89,8 +89,8 @@ const DropList = (lsKey, items) => {
             ref={provided.innerRef}
             style={getListStyle(snapshot.isDraggingOver)}
           >
-            {/* Must check for value.items existence first or Undefined warning */}
-            {value.items && value.items.map((item, index) => (
+            {/* Must check for value.ents existence first or Undefined warning */}
+            {value.ents && value.ents.map((item, index) => (
               <Draggable key={item.id} draggableId={item.id} index={index}>
                 {(provided, snapshot) => (
                   <div

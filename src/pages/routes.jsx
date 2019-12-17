@@ -3,7 +3,28 @@ import { Redirect } from "react-router-dom"
 import AdobePicker from "../components/AdobePicker"
 import DropList from "../components/DropList"
 import ToDo from "../components/ToDo"
-import Mangle from './Mangle'
+import Mangle from "./Mangle"
+import numWords from "num-words"
+import capitalize from "capitalize"
+
+const uuidv4 = require("uuid/v4")
+
+const tdList = (num) => {
+  const arr = []
+    for(let i = 0; i<num; i++) {
+      arr[i] = {...new Set()}
+      arr[i].key = uuidv4()
+      arr[i].id = i+1
+      arr[i].content = capitalize(numWords(i+1))
+      arr[i].isCompleted = false
+    }
+    return {items: arr}
+  }
+//{items: [{ id: 1, content: "One", isCompleted: true },{ id: 2, content: "two", isCompleted: false  },{ id: 3, content: "Three", isCompleted: false  },{ id: 4, content: "four", isCompleted: false  },{ id: 5, content: "Five", isCompleted: true  },{ id: 6, content: "six", isCompleted: false  },{ id: 7, content: "Seven", isCompleted: false  },{ id: 8, content: "eight", isCompleted: false  },{ id: 9, content: "Nine", isCompleted: true }]}
+
+const projectList = () => {
+  return (JSON.parse('{ items: [{ id: 1, content: "One" },{ id: 2, content: "two" },{ id: 3, content: "Three" },{ id: 4, content: "four" },{ id: 5, content: "Five" },{ id: 6, content: "six" },{ id: 7, content: "Seven" },{ id: 8, content: "eight" },{ id: 9, content: "Nine" }]}'))
+}
 
 export default [
   {
@@ -30,42 +51,14 @@ export default [
     id: 3,
     path: "/todo",
     sidebar: "Todo",
-    main: () =>
-      ToDo("ToDoList", {
-        items: [
-          {
-            content: "Make a list",
-            isCompleted: true
-          },
-          {
-            content: "Check it twice",
-            isCompleted: false
-          },
-          {
-            content: "Build a ToDo app in React",
-            isCompleted: false
-          }
-        ]
-      })
+    main: () => ToDo( "ToDoList", tdList(5) )
   },
   {
     id: 4,
     path: "/projects",
     sidebar: "Projects",
     main: () =>
-      DropList("ProjectList", {
-        items: [
-          { id: 1, content: "one" },
-          { id: 2, content: "two" },
-          { id: 3, content: "three" },
-          { id: 4, content: "four" },
-          { id: 5, content: "five" },
-          { id: 6, content: "six" },
-          { id: 7, content: "seven" },
-          { id: 8, content: "eight" },
-          { id: 9, content: "nine" }
-        ]
-      })
+      DropList("ProjectList", projectList)
   },
   {
     id: 5,
@@ -75,6 +68,12 @@ export default [
   },
   {
     id: 6,
+    path: "/mangle",
+    sidebar: "Mangle",
+    main: () => Mangle("MangleList", {items: [{key: 'key1', id: 1, content: "one"},{key: 'key2',id: 2, content: "two"},{key: 'key3',id: 3, content: "three"},{key: 'key4',id: 4, content: "four"},{key: 'key5',id: 5, content: "five"},{key: 'key6',id: 6, content: "six"},{key: 'key7',id: 7, content: "seven"},{key: 'key8',id: 8, content: "eight"}]})
+  },
+  {
+    id: 7,
     path: "/about",
     sidebar: "About",
     main: () => (
@@ -84,22 +83,5 @@ export default [
         More blank pages. This is the 'About J. Adam Moore' page.
       </div>
     )
-  },
-  {
-    id: 7,
-    path: "/mangle",
-    sidebar: "Mangle",
-    main: () => Mangle("MangleList", {
-      items: [
-        { id: 1, content: "one" },
-        { id: 2, content: "two" },
-        { id: 3, content: "three" },
-        { id: 4, content: "four" },
-        { id: 5, content: "five" },
-        { id: 6, content: "six" },
-        { id: 7, content: "seven" },
-        { id: 8, content: "eight" }
-      ]
-    })
   }
 ]
