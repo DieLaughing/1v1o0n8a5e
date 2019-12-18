@@ -4,7 +4,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 // fake data generator to show data shape
 // Array must not have an id: 0 for react-beautiful-dnd to work
 
-/* const getents = count =>
+/* const getitems = count =>
 Array.from({ length: count }, (v, k) => k).map(k => ({
   id: `${k+1}`,
   content: `item-${k+1}`,
@@ -43,23 +43,23 @@ const getListStyle = isDraggingOver => ({
   overflow: 'auto'
 })
 
-const DropList = (lsKey, ents) => {
+const DropList = (lsKey, items) => {
 
   // Check if data exists, then load it, or use default data.
-  const [ value, setValue ] = useState(JSON.parse(localStorage.getItem(lsKey)) || ents)
+  const [ state, setState ] = useState(JSON.parse(localStorage.getItem(lsKey)) || items)
     
     useEffect(() => {
       const data = localStorage.getItem(lsKey)
       if (data) {
-        setValue(JSON.parse(data))
+        setState(JSON.parse(data))
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
   useEffect(() => {
-    localStorage.setItem(lsKey, JSON.stringify({ents: Array.from(value.ents)}))
+    localStorage.setItem(lsKey, JSON.stringify(state))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value])
+  }, [state])
 
   
   const onDragEnd = (result) => {
@@ -69,14 +69,14 @@ const DropList = (lsKey, ents) => {
       return
     }
     
-    ents = reorder(
-      value.ents,
+    ;(items = reorder(
+      state.items,
       result.source.index,
       result.destination.index
-    )
+    ))
 
-    setValue({
-      ents,
+    setState({
+      items,
     })
 
   }
@@ -89,8 +89,8 @@ const DropList = (lsKey, ents) => {
             ref={provided.innerRef}
             style={getListStyle(snapshot.isDraggingOver)}
           >
-            {/* Must check for value.ents existence first or Undefined warning */}
-            {value.ents && value.ents.map((item, index) => (
+            {/* Must check for state.items existence first or Undefined warning */}
+            {state.items && state.items.map((item, index) => (
               <Draggable key={item.id} draggableId={item.id} index={index}>
                 {(provided, snapshot) => (
                   <div

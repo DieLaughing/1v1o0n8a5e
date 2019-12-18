@@ -20,11 +20,8 @@ const tdList = (num) => {
     }
     return {items: arr}
   }
+  
 //{items: [{ id: 1, content: "One", isCompleted: true },{ id: 2, content: "two", isCompleted: false  },{ id: 3, content: "Three", isCompleted: false  },{ id: 4, content: "four", isCompleted: false  },{ id: 5, content: "Five", isCompleted: true  },{ id: 6, content: "six", isCompleted: false  },{ id: 7, content: "Seven", isCompleted: false  },{ id: 8, content: "eight", isCompleted: false  },{ id: 9, content: "Nine", isCompleted: true }]}
-
-const projectList = () => {
-  return (JSON.parse('{ items: [{ id: 1, content: "One" },{ id: 2, content: "two" },{ id: 3, content: "Three" },{ id: 4, content: "four" },{ id: 5, content: "Five" },{ id: 6, content: "six" },{ id: 7, content: "Seven" },{ id: 8, content: "eight" },{ id: 9, content: "Nine" }]}'))
-}
 
 export default [
   {
@@ -55,10 +52,10 @@ export default [
   },
   {
     id: 4,
-    path: "/projects",
-    sidebar: "Projects",
+    path: "/droplist",
+    sidebar: "Drop List",
     main: () =>
-      DropList("ProjectList", projectList)
+      DropList("DropList", tdList(9))
   },
   {
     id: 5,
