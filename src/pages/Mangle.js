@@ -41,8 +41,9 @@ const Mangle = ({ lsKey = "MangleList", items = {} }) => {
 
   function adds() {
     const i = state.items.length
+    const lasti = state.items[i-1].id
     console.log("Add button pressed")
-    const newState = [...state.items, { key: `${uuidv4()}`, id: i+1, content: capitalize(numWords(i + 1))}]
+    const newState = [...state.items, { key: uuidv4(), id: lasti + 1, content: capitalize(numWords(lasti + 1))}]
     setState({items: newState})
   }
 
@@ -66,7 +67,7 @@ return (
       {state.items &&
         state.items.map((item, index) =>
             <div key={item.key}>
-              {index + 1} {item.content} {item.key}
+              {item.id} {item.content} {item.key}
               <button onClick={() => del(item)}>-</button>
             </div>
         )

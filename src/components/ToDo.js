@@ -73,18 +73,17 @@ useEffect(() => {
 
 
   function createTodoAtIndex(e, i) {
-    const len = state.items.length
-    const newList = [...state.items, {
+    const newList = [...state.items]
+    const len = newList.length
+    const lasti = newList[len-1].id
+    
+    newList[len] = {
       key: uuidv4(),
-      index: len+1,
-      id: len+1,
-      content: capitalize(numWords(len+1)),
+      content: capitalize(numWords(lasti)),
+      id: lasti,
       isCompleted: false
-    }]
+    }
     setState({items: newList})
-    /* setTimeout(() => {
-      document.forms[0].elements[i + 1].focus()
-    }, 10) */
   }
 
   function updateTodoAtIndex(e, i) {
