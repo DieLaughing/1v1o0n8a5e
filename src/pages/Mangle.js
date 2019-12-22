@@ -18,9 +18,9 @@ const listItems = (num) => {
 
 
 // Pass in the LocalState name and an array of objects
-const Mangle = ({ lsKey = "MangleList", items = {} }) => {
+const Mangle = (lsKey, items) => {
   // Check if data exists, then load it, or use default daentriesta.
-  const [ state, setState ] = useState(JSON.parse(localStorage.getItem(lsKey)) || listItems(10) )
+  const [ state, setState ] = useState(JSON.parse(localStorage.getItem(lsKey)) || items )
   //const [ {items}, setState ] = useState({ items: state })
 
   // Runs once at the beginning
@@ -58,22 +58,22 @@ const Mangle = ({ lsKey = "MangleList", items = {} }) => {
 
   function clr() {
     console.log("RESET button pressed")
-    setState(listItems(9))
+    setState(items)
   }
 
 return (
     <React.Fragment>
       Items:{" "}
+      <button onClick={() => clr()}>Reset</button>
+      <button onClick={() => adds()}>+</button>
       {state.items &&
         state.items.map((item, index) =>
             <div key={item.key}>
-              {item.id} {item.content} {item.key}
               <button onClick={() => del(item)}>-</button>
+              {item.id} {item.content} {item.key}
             </div>
         )
       }
-      <button onClick={() => clr()}>Reset</button>
-      <button onClick={() => adds()}>+</button>
     </React.Fragment>
   )
 }

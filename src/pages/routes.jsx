@@ -9,19 +9,17 @@ import capitalize from "capitalize"
 
 const uuidv4 = require("uuid/v4")
 
-const tdList = (num) => {
+const tdList = num => {
   const arr = []
-    for(let i = 0; i<num; i++) {
-      arr[i] = {...new Set()}
-      arr[i].key = uuidv4()
-      arr[i].id = i+1
-      arr[i].content = capitalize(numWords(i+1))
-      arr[i].isCompleted = false
-    }
-    return {items: arr}
+  for (let i = 0; i < num; i++) {
+    arr[i] = { ...new Set() }
+    arr[i].key = uuidv4()
+    arr[i].id = i + 1
+    arr[i].content = capitalize(numWords(i + 1))
+    arr[i].isCompleted = false
   }
-  
-//{items: [{ id: 1, content: "One", isCompleted: true },{ id: 2, content: "two", isCompleted: false  },{ id: 3, content: "Three", isCompleted: false  },{ id: 4, content: "four", isCompleted: false  },{ id: 5, content: "Five", isCompleted: true  },{ id: 6, content: "six", isCompleted: false  },{ id: 7, content: "Seven", isCompleted: false  },{ id: 8, content: "eight", isCompleted: false  },{ id: 9, content: "Nine", isCompleted: true }]}
+  return { items: arr }
+}
 
 export default [
   {
@@ -39,8 +37,9 @@ export default [
       <div>
         <h1 style={{ fontFamily: "Electrolize", fontSize: "1.85em" }}>Home</h1>
         <br />
-        This is the Home page. There are other pages like it, but this is the
-        Home page.
+        <pre id="json">
+          {JSON.stringify(localStorage)}
+        </pre>
       </div>
     )
   },
@@ -48,14 +47,13 @@ export default [
     id: 3,
     path: "/todo",
     sidebar: "Todo",
-    main: () => ToDo( "ToDoList", tdList(5) )
+    main: () => ToDo("ToDoList", tdList(5))
   },
   {
     id: 4,
     path: "/droplist",
     sidebar: "Drop List",
-    main: () =>
-      DropList("DropList", tdList(9))
+    main: () => DropList("DropList", tdList(9))
   },
   {
     id: 5,
@@ -67,7 +65,7 @@ export default [
     id: 6,
     path: "/mangle",
     sidebar: "Mangle",
-    main: () => Mangle("MangleList", {items: [{key: 'key1', id: 1, content: "one"},{key: 'key2',id: 2, content: "two"},{key: 'key3',id: 3, content: "three"},{key: 'key4',id: 4, content: "four"},{key: 'key5',id: 5, content: "five"},{key: 'key6',id: 6, content: "six"},{key: 'key7',id: 7, content: "seven"},{key: 'key8',id: 8, content: "eight"}]})
+    main: () => Mangle("MangleList", tdList(7))
   },
   {
     id: 7,
