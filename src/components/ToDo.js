@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from "react"
-import "../settings/ToDo.css"
-import numWords from "num-words"
-import capitalize from "capitalize"
+import React, { useState, useEffect } from 'react'
+import '../settings/ToDo.css'
+import numWords from 'num-words'
+import capitalize from 'capitalize'
 
-const uuidv4 = require("uuid/v4")
-
-function init(data) {
-  return (
-    data || {items: [{ id: 1, content: "One", isCompleted: true },{ id: 2, content: "two", isCompleted: false  },{ id: 3, content: "Three", isCompleted: false  },{ id: 4, content: "four", isCompleted: false  },{ id: 5, content: "Five", isCompleted: true  },{ id: 6, content: "six", isCompleted: false  },{ id: 7, content: "Seven", isCompleted: false  },{ id: 8, content: "eight", isCompleted: false  },{ id: 9, content: "Nine", isCompleted: true }]}
-  )
-}
+const uuidv4 = require('uuid/v4')
 
 // TODO: create an deleted array to store deleted entries and use both array lengths to determine the next index number, for consistency.
 
@@ -43,8 +37,10 @@ function init(data) {
 function ToDo(lsKey, items) {
   //const items = []
   // Check if data exists, then load it, or use default data.
-  const [list, setList] = useState(JSON.parse(localStorage.getItem(lsKey)) || items)
-  const [state, setState] = useState(init(list))
+  const [list, setList] = useState(
+    JSON.parse(localStorage.getItem(lsKey)) || items
+  )
+  const [state, setState] = useState(list || items)
 
   useEffect(() => {
     if (list) {
@@ -52,76 +48,79 @@ function ToDo(lsKey, items) {
       setState(list)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  }, [])
 
-useEffect(() => {
-  localStorage.setItem(lsKey, JSON.stringify(state))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [state])
-
+  useEffect(() => {
+    localStorage.setItem(lsKey, JSON.stringify(state))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state])
 
   function handleKeyDown(e, i) {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       createTodoAtIndex(e, i)
     }
-    if (e.key === "Backspace" && state.items[i].content === "") {
+    if (e.key === 'Backspace' && state.items[i].content === '') {
       e.preventDefault()
-      const newList = state.items.slice(0,i).concat(state.items.slice(i+1, state.items.length))
-      setState({items: newList})
+      const newList = state.items
+        .slice(0, i)
+        .concat(state.items.slice(i + 1, state.items.length))
+      setState({ items: newList })
     }
   }
-
 
   function createTodoAtIndex(e, i) {
     const newList = [...state.items]
     const len = newList.length
-    const lasti = newList[len-1].id
-    
+    const lasti = newList[len - 1].id
+
     newList[len] = {
       key: uuidv4(),
-      content: capitalize(numWords(lasti)),
-      id: lasti,
+      content: capitalize(numWords(lasti+1)),
+      id: lasti+1,
       isCompleted: false
     }
-    setState({items: newList})
+    setState({ items: newList })
   }
 
   function updateTodoAtIndex(e, i) {
     const newList = [...state.items]
     newList[i].content = e.target.value
-    setState({items: newList})
+    setState({ items: newList })
   }
 
   function toggleTodoCompleteAtIndex(i) {
     const newList = [...state.items]
     newList[i].isCompleted = !newList[i].isCompleted
-    setState({items: newList})
+    setState({ items: newList })
   }
 
-        //<img src={logo} className='logo' alt='logo' />
+  //<img src={logo} className='logo' alt='logo' />
   return (
     <div className='todo-app'>
-      <div className='todo-header'>ToDo's
-      </div>
+      <div className='todo-header'>ToDo's</div>
       <form className='todo-list'>
         <ul>
-          {state.items && state.items.map((todo, i) => (
-            <div key={i} className={`todo ${todo.isCompleted && "todo-is-completed"}`}>
+          {state.items &&
+            state.items.map((todo, i) => (
               <div
-                key={'div=' + i}
-                className={"checkbox"}
-                onClick={() => toggleTodoCompleteAtIndex(i)}
+                key={i}
+                className={`todo ${todo.isCompleted && 'todo-is-completed'}`}
               >
-                {todo.isCompleted && <span>&#x2714;</span>}
+                <div
+                  key={'div=' + i}
+                  className={'checkbox'}
+                  onClick={() => toggleTodoCompleteAtIndex(i)}
+                >
+                  {todo.isCompleted && <span>&#x2714;</span>}
+                </div>
+                <input
+                  type='text'
+                  value={todo.content}
+                  onKeyDown={e => handleKeyDown(e, i)}
+                  onChange={e => updateTodoAtIndex(e, i)}
+                />
               </div>
-              <input
-                type='text'
-                value={todo.content}
-                onKeyDown={e => handleKeyDown(e, i)}
-                onChange={e => updateTodoAtIndex(e, i)}
-              />
-            </div>
-          ))}
+            ))}
         </ul>
       </form>
     </div>

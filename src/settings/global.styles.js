@@ -33,11 +33,15 @@ export default css`
       content: "\u200B";
     }
   }
-  a, link, input, .logo {
+  a,
+  link,
+  input,
+  .logo {
     transition: color 0.2s;
     color: #265c83;
   }
-  a:link, a:visited {
+  a:link,
+  a:visited {
     color: #265c83;
   }
   a:hover {
@@ -55,7 +59,9 @@ export default css`
   .navselect:focus {
     color: #007be6;
   }
-  input:hover, .logo:hover, .navselect:hover {
+  input:hover,
+  .logo:hover,
+  .navselect:hover {
     transition: color 0.2s;
     color: #7fdbff;
   }
@@ -82,7 +88,8 @@ export default css`
     -webkit-transition-property: color;
     transition-property: color;
   }
-  .text-pulse:focus, .text-pulse:active {
+  .text-pulse:focus,
+  .text-pulse:active {
     -webkit-animation-name: text-pulse;
     animation-name: text-pulse;
     -webkit-animation-duration: 2.25s;

@@ -7,8 +7,6 @@ import routes from "../pages/routes"
 import Logo from "../components/Logo"
 import Sidebar from "react-sidebar"
 import useWindowSize from "../hooks/useWindowSize"
-import useInputState from "../hooks/useInputState"
-import useStateWithLocalStorage from "../hooks/useStateWithLocalStorage"
 
 const SidebarHeader = styled.div`
   padding: 34px;
@@ -66,30 +64,31 @@ const SearchField = styled.input`
   background-color: transparent;
 `
 
-function useDocumentTitle(title) {
-  useEffect(() => {
-    document.title = title
-  })
-}
-
-const SidebarMenu = () => {
+const SidebarMenu = ({lsKey, items, ...props}) => {
   const [sidebarDocked, setSidebarDocked] = useState(false)
   const [open, setSidebarOpen] = useState(false)
-  const name = useInputState("1v1o0n8a5e")
+  const [list, setList] = useState(localStorage.getItem(lsKey) || items)
+  const [state, setState] = useState(list || items)
+
   const size = useWindowSize()
-  const [value, setValue] = useStateWithLocalStorage("SearchFieldValue")
-  useDocumentTitle(value)
+
+  // Runs once at the beginning
+  useEffect(() => {
+    if (list) {
+      setState(JSON.parse(list))
+      setList(list)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    document.title = state
+    localStorage.setItem(lsKey, JSON.stringify(state))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state])
 
   const nameWidth = size.width - size.width / 2 + "px"
-  const onChange = event => setValue(event.target.value)
-
-  function onSetSidebarDocked(dock) {
-    setSidebarDocked(dock)
-  }
-
-  function onSetSidebarOpen(opn) {
-    setSidebarOpen(opn)
-  }
+  const onChange = event => setState(event.target.value)
 
   const markActive = (match, location) => {
     if (!match) {
@@ -112,6 +111,7 @@ const SidebarMenu = () => {
                 height: "100vh",
                 overflow: "hidden"
               }}
+              {...props}
             >
               <SidebarHeader>v0.1.0</SidebarHeader>
               <ul>
@@ -150,20 +150,20 @@ const SidebarMenu = () => {
           }}
           docked={sidebarDocked}
           open={open}
-          onSetOpen={onSetSidebarOpen}
+          onSetOpen={setSidebarOpen}
           touch
         >
           <AppHeader>
             <AppTitle>
               <Button
                 color={theme.global.colors.search}
-                onClick={() => onSetSidebarDocked(!sidebarDocked)}
+                onClick={() => setSidebarDocked(!sidebarDocked)}
               >
                 <Logo />
               </Button>
               <SearchField
-                name={name.value}
-                value={value}
+                name={state}
+                value={state}
                 onChange={onChange}
                 className='text-pulse'
                 width={nameWidth}

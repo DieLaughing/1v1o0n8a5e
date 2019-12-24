@@ -12,6 +12,7 @@
     "react": "^0.0.0-experimental-f6b8d31a7",
     "react-beautiful-dnd": "^11.0.5",
     "react-dom": "^0.0.0-experimental-f6b8d31a7",
+    "react-json-pretty": "^2.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-sidebar": "^2.3.0",

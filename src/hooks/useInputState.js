@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
-export default (initialValue) => {
-  const [value, setValue] = useState(initialValue || '')
+export default (store, initialValue) => {
+  const [value, setValue] = useState(JSON.parse(localStorage.getItem(store)) || initialValue)
 
   return {
     value,
     onChange: event => {
       setValue(event.target.value)
     },
-    reset: () => setValue('')
+    reset: () => setValue(initialValue)
   }
 }

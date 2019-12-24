@@ -21,7 +21,7 @@ const AppWrapper = styled.div`
   ${color}
 `
 
-const App = () => {
+const App = (props) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -29,8 +29,9 @@ const App = () => {
         className='App'
         color={theme.global.colors.brand}
         bg={theme.global.colors.bg_silver}
+        {...props}
       >
-        <SidebarMenu />
+        <SidebarMenu lsKey="AppName" items="1v1o0n8a5e"/>
       </AppWrapper>
     </ThemeProvider>
   )
