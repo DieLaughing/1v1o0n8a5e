@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Marker from './Marker'
+import Marker from '../components/Marker'
 import Colorwheel from './Colorwheel'
 
 class AdobePicker extends Component {

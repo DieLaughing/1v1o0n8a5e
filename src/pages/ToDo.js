@@ -7,39 +7,10 @@ const uuidv4 = require('uuid/v4')
 
 // TODO: create an deleted array to store deleted entries and use both array lengths to determine the next index number, for consistency.
 
-/* function reducer(state, action) {
-  switch (action.type) {
-    case "CREATE":
-      console.log("CREATE button pressed")
-      //const len = Array.from(state.items).length + 1
-      const newList = [...state.items, {
-        key: action.payload,
-        content: "",
-        isCompleted: false
-      }]
-      return {items: newList}
-    case "DELETE":
-      console.log("DELETE button pressed")
-      //oldList.pop() TODO: Get the key of the ToDo with focus and slice it out
-      //setList(action.payload)
-      break;
-    case "CLEAR":
-      console.log("RESET button pressed")
-      return init(action.payload)
-    case "TOGGLE":
-      console.log("TOGGLE button pressed")
-      return
-    default:
-      throw new Error()
-  }
-} */
-
 function ToDo(lsKey, items) {
-  //const items = []
+
   // Check if data exists, then load it, or use default data.
-  const [list, setList] = useState(
-    JSON.parse(localStorage.getItem(lsKey)) || items
-  )
+  const [list, setList] = useState(JSON.parse(localStorage.getItem(lsKey)) || items)
   const [state, setState] = useState(list || items)
 
   useEffect(() => {
@@ -48,7 +19,7 @@ function ToDo(lsKey, items) {
       setState(list)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [list])
 
   useEffect(() => {
     localStorage.setItem(lsKey, JSON.stringify(state))
@@ -75,7 +46,7 @@ function ToDo(lsKey, items) {
 
     newList[len] = {
       key: uuidv4(),
-      content: capitalize(numWords(lasti+1)),
+      content: capitalize.words(numWords(lasti+1)),
       id: lasti+1,
       isCompleted: false
     }
@@ -94,10 +65,12 @@ function ToDo(lsKey, items) {
     setState({ items: newList })
   }
 
-  //<img src={logo} className='logo' alt='logo' />
   return (
     <div className='todo-app'>
-      <div className='todo-header'>ToDo's</div>
+      {/* TODO: change color of pulse based on how close to completing items from RED to GREEN through YELLOW
+      TODO: make this feature customizable
+      TODO: make this integrated with the theme */}
+      <div className='todo-header text-pulse dave'>ToDo's</div>
       <form className='todo-list'>
         <ul>
           {state.items &&

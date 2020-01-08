@@ -1,6 +1,6 @@
-import React, { useState, useEffect, Fragment } from 'react'
-import styled from 'styled-components'
-import { color } from 'styled-system'
+import React, { useState, useEffect, Fragment } from "react"
+import styled from "styled-components"
+import { color } from "styled-system"
 import { NavLink, Route } from "react-router-dom"
 import theme from "../settings/theme"
 import routes from "../pages/routes"
@@ -64,10 +64,10 @@ const SearchField = styled.input`
   background-color: transparent;
 `
 
-const SidebarMenu = ({lsKey, items, ...props}) => {
+const SidebarMenu = ({ lsKey, items, ...props }) => {
   const [sidebarDocked, setSidebarDocked] = useState(false)
   const [open, setSidebarOpen] = useState(false)
-  const [list, setList] = useState(localStorage.getItem(lsKey) || items)
+  const [list, setList] = useState(JSON.parse(localStorage.getItem(lsKey)) || items)
   const [state, setState] = useState(list || items)
 
   const size = useWindowSize()
@@ -75,17 +75,36 @@ const SidebarMenu = ({lsKey, items, ...props}) => {
   // Runs once at the beginning
   useEffect(() => {
     if (list) {
-      setState(JSON.parse(list))
+      setState(list || items)
       setList(list)
+    }
+    if (state === "") {
+      localStorage.setItem(lsKey, JSON.stringify('1v1o0n8a5e'))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
-    document.title = state
-    localStorage.setItem(lsKey, JSON.stringify(state))
+      document.title = state
+      let keyName = listAllItems() || []
+
+      for (let i = 0; i < keyName.length; i++) {
+        if (keyName[i] === state) {
+          console.log("SAME")
+          // TODO: Put Easter Egg search here
+        }
+      }
+      localStorage.setItem(lsKey, JSON.stringify(state))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state])
+
+  function listAllItems() {
+    let t = []
+    for (let i = 0; i < localStorage.length; i++) {
+      t.push(localStorage.key(i))
+    }
+    return t
+  }
 
   const nameWidth = size.width - size.width / 2 + "px"
   const onChange = event => setState(event.target.value)
@@ -97,91 +116,91 @@ const SidebarMenu = ({lsKey, items, ...props}) => {
     return true
   }
 
-  return(
+  return (
     <Sidebar
-          sidebar={
-            <div
-              style={{
-                textAlign: "center",
-                margin: "0",
-                paddingTop: "1rem",
-                fontFamily: "Electrolize",
-                fontSize: "1.5em",
-                background: theme.global.colors.fill_gray,
-                height: "100vh",
-                overflow: "hidden"
-              }}
-              {...props}
-            >
-              <SidebarHeader>v0.1.0</SidebarHeader>
-              <ul>
-                {routes.map(route => {
-                  if (route.path === "/") {
-                    return <Fragment key={route.id}></Fragment>
-                  } else {
-                    return (
-                      <li key={route.id}>
-                        <NavLink
-                          exact
-                          to={route.path}
-                          isActive={markActive}
-                          className='noselect'
-                          activeClassName='navselect'
-                        >
-                          {route.sidebar}
-                        </NavLink>
-                      </li>
-                    )
-                  }
-                })}
-              </ul>
-            </div>
-          }
-          styles={{
-            sidebar: {
-              top: null,
-              width: "10vw",
-              minWidth: "185px",
-              backgroundColor: theme.global.colors.fill_gray,
-              margin: "0",
-              padding: "0",
-              overflow: "hidden"
-            }
+      sidebar={
+        <div
+          style={{
+            textAlign: "center",
+            margin: "0",
+            paddingTop: "1rem",
+            fontFamily: "Electrolize",
+            fontSize: "1.5em",
+            background: theme.global.colors.fill_gray,
+            height: "100vh",
+            overflow: "hidden"
           }}
-          docked={sidebarDocked}
-          open={open}
-          onSetOpen={setSidebarOpen}
-          touch
+          {...props}
         >
-          <AppHeader>
-            <AppTitle>
-              <Button
-                color={theme.global.colors.search}
-                onClick={() => setSidebarDocked(!sidebarDocked)}
-              >
-                <Logo />
-              </Button>
-              <SearchField
-                name={state}
-                value={state}
-                onChange={onChange}
-                className='text-pulse'
-                width={nameWidth}
-                spellCheck='false'
-              />
-            </AppTitle>
-          </AppHeader>
-          <SidebarBody>
-            {routes.map(route => (
-              <Route
-                key={route.id}
-                path={route.path}
-                exact={route.exact}
-                component={route.main}
-              />
-            ))}
-          </SidebarBody>
-        </Sidebar>
+          <SidebarHeader>v0.1.0</SidebarHeader>
+          <ul>
+            {routes.map(route => {
+              if (route.path === "/") {
+                return <Fragment key={route.id}></Fragment>
+              } else {
+                return (
+                  <li key={route.id}>
+                    <NavLink
+                      exact
+                      to={route.path}
+                      isActive={markActive}
+                      className='noselect'
+                      activeClassName='navselect'
+                    >
+                      {route.sidebar}
+                    </NavLink>
+                  </li>
+                )
+              }
+            })}
+          </ul>
+        </div>
+      }
+      styles={{
+        sidebar: {
+          top: null,
+          width: "10vw",
+          minWidth: "185px",
+          backgroundColor: theme.global.colors.fill_gray,
+          margin: "0",
+          padding: "0",
+          overflow: "hidden"
+        }
+      }}
+      docked={sidebarDocked}
+      open={open}
+      onSetOpen={setSidebarOpen}
+      touch
+    >
+      <AppHeader>
+        <AppTitle>
+          <Button
+            color={theme.global.colors.search}
+            onClick={() => setSidebarDocked(!sidebarDocked)}
+          >
+            <Logo />
+          </Button>
+          <SearchField
+            name={state}
+            value={state}
+            onChange={onChange}
+            className='text-pulse'
+            width={nameWidth}
+            spellCheck='false'
+          />
+        </AppTitle>
+      </AppHeader>
+      <SidebarBody>
+        {routes.map(route => (
+          <Route
+            key={route.id}
+            path={route.path}
+            exact={route.exact}
+            component={route.main}
+          />
+        ))}
+      </SidebarBody>
+    </Sidebar>
   )
 }
 

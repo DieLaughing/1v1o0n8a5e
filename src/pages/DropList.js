@@ -58,8 +58,7 @@ const DropList = (lsKey, items) => {
 
   useEffect(() => {
     localStorage.setItem(lsKey, JSON.stringify(state))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state])
+  }, [state, lsKey])
 
   
   const onDragEnd = (result) => {

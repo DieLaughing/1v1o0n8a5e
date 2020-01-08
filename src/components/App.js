@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Suspense } from "react"
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
 import { color, width } from "styled-system"
 import theme from "../settings/theme"
@@ -23,6 +23,7 @@ const AppWrapper = styled.div`
 
 const App = (props) => {
   return (
+    <Suspense fallback={<h1>Loading...</h1>}>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AppWrapper
@@ -31,9 +32,10 @@ const App = (props) => {
         bg={theme.global.colors.bg_silver}
         {...props}
       >
-        <SidebarMenu lsKey="AppName" items="1v1o0n8a5e"/>
+        <SidebarMenu lsKey={"AppName"} items={"1v1o0n8a5e"}/>
       </AppWrapper>
     </ThemeProvider>
+    </Suspense>
   )
 }
 

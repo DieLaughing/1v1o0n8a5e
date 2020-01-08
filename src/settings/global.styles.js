@@ -89,7 +89,7 @@ export default css`
     transition-property: color;
   }
   .text-pulse:focus,
-  .text-pulse:active {
+  .text-pulse:active, .dave {
     -webkit-animation-name: text-pulse;
     animation-name: text-pulse;
     -webkit-animation-duration: 2.25s;
@@ -111,7 +111,20 @@ export default css`
     user-select: none; /* Non-prefixed version, currently
                         supported by Chrome and Opera */
   }
+  p, h3 {
+    width: 10vw;
+    border: 0;
+    margin: 0;
+  }
+  button {
+    margin-right: 10vw;
+    margin-left: 0;
+  }
   button::-moz-focus-inner {
     border: 0;
+  }
+  h1 {
+    width: auto;
+    text-align: center;
   }
 `
