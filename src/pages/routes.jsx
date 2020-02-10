@@ -1,7 +1,7 @@
 import React from "react"
 import { Redirect } from "react-router-dom"
 import Home from './Home'
-import AdobePicker from "./AdobePicker"
+import ThemePicker from "../components/ThemePicker"
 import DropList from "./DropList"
 import ToDo from "./ToDo"
 import Mangle from "./Mangle"
@@ -52,7 +52,7 @@ export default [
     id: 5,
     path: "/color",
     sidebar: "Color",
-    main: () => <AdobePicker />
+    main: () => <ThemePicker />
   },
   {
     id: 6,

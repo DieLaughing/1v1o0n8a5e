@@ -13,21 +13,21 @@ const SidebarHeader = styled.div`
   font-family: "Aldrich", sans-serif;
   font-size: 1em;
   min-height: 10vh;
-  ${color}
+  ${color};
 `
 
 const AppHeader = styled.div`
-  tag: header;
   direction: row;
   align: start;
   justify: start;
   background: ${theme.global.colors.brand};
+  overflow: hidden;
+  height: auto;
+  tag: header;
   padleft: 50px;
   padright: 15px;
   padvertical: 15px;
   zindex: 1;
-  overflow: hidden;
-  height: auto;
   minheight: 6rem;
 `
 
@@ -67,7 +67,9 @@ const SearchField = styled.input`
 const SidebarMenu = ({ lsKey, items, ...props }) => {
   const [sidebarDocked, setSidebarDocked] = useState(false)
   const [open, setSidebarOpen] = useState(false)
-  const [list, setList] = useState(JSON.parse(localStorage.getItem(lsKey)) || items)
+  const [list, setList] = useState(
+    JSON.parse(localStorage.getItem(lsKey)) || items
+  )
   const [state, setState] = useState(list || items)
 
   const size = useWindowSize()
@@ -79,22 +81,22 @@ const SidebarMenu = ({ lsKey, items, ...props }) => {
       setList(list)
     }
     if (state === "") {
-      localStorage.setItem(lsKey, JSON.stringify('1v1o0n8a5e'))
+      localStorage.setItem(lsKey, JSON.stringify("1v1o0n8a5e"))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
-      document.title = state
-      let keyName = listAllItems() || []
+    document.title = state
+    let keyName = listAllItems() || []
 
-      for (let i = 0; i < keyName.length; i++) {
-        if (keyName[i] === state) {
-          console.log("SAME")
-          // TODO: Put Easter Egg search here
-        }
+    for (let i = 0; i < keyName.length; i++) {
+      if (keyName[i] === state) {
+        console.log("SAME")
+        // TODO: Put Easter Egg search here
       }
-      localStorage.setItem(lsKey, JSON.stringify(state))
+    }
+    localStorage.setItem(lsKey, JSON.stringify(state))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state])
 

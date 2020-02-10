@@ -11,6 +11,7 @@
     "num-words": "^1.0.1",
     "react": "^0.0.0-experimental-241c4467e",
     "react-beautiful-dnd": "^11.0.5",
+    "react-color": "^2.18.0",
     "react-dom": "^0.0.0-experimental-241c4467e",
     "react-json-pretty": "^2.2.0",
     "react-router-dom": "^5.1.2",
