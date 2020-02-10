@@ -21,20 +21,21 @@ const AppWrapper = styled.div`
   ${color}
 `
 
-const App = (props) => {
+const App = props => {
   return (
     <Suspense fallback={<h1>Loading...</h1>}>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <AppWrapper
-        className='App'
-        color={theme.global.colors.brand}
-        bg={theme.global.colors.bg_silver}
-        {...props}
-      >
-        <SidebarMenu lsKey={"AppName"} items={"1v1o0n8a5e"}/>
-      </AppWrapper>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <AppWrapper
+          className='App'
+          color={theme.global.colors.brand}
+          bg={theme.global.colors.bg_silver}
+          {...props}
+          >
+          <SidebarMenu lsKey={"AppName"} items={"1v1o0n8a5e"} />
+          <p>"Test text"</p>
+        </AppWrapper>
+      </ThemeProvider>
     </Suspense>
   )
 }

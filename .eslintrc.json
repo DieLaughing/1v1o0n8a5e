@@ -4,7 +4,6 @@
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaVersion": 7,
@@ -17,7 +16,7 @@
     "plugins": [
         "react",
         "react-hooks",
-        "prettier"
+        "eslint-plugin-prettier"
       ],
       "rules": {
         // ...
@@ -41,6 +40,7 @@
         ],
         "no-unused-vars": "off",
         "no-console": "off",
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
+        "extends": ["plugin:prettier/recommended"]
     }
 }
