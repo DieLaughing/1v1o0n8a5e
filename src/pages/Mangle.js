@@ -70,27 +70,26 @@ const Mangle = (lsKey, items) => {
         <button onClick={() => clr()}>Reset</button>
         <button onClick={() => adds()}>+</button>
       </span>
-      <div style={{ margin: "1rem" }}>
+      <div style={{ margin: "1rem" }}></div>
+      <div
+        key={"div-king1"}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyItems: "center",
+          alignItems: "center",
+          alignContent: "center",
+          justifyContent: "space-evenly",
+          width: "auto",
+          margin: "auto"
+        }}
+      >
+        <h3>Items: </h3>
+        <h3>ID: </h3>
+        <h3>Number: </h3>
+        <h3>Key: </h3>
+        <h3>Completed: </h3>
       </div>
-        <div
-          key={"div-king1"}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyItems: "center",
-              alignItems: "center",
-              alignContent: "center",
-              justifyContent: "space-evenly",
-              width: "auto",
-            margin: "auto"
-          }}
-        >
-          <h3>Items: </h3>
-          <h3>ID: </h3>
-          <h3>Number: </h3>
-          <h3>Key: </h3>
-          <h3>Completed: </h3>
-        </div>
       {state.items &&
         state.items.map((item, index) => (
           <div
