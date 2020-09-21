@@ -9,9 +9,10 @@
     "hashids": "^2.1.0",
     "htm": "^2.2.1",
     "num-words": "^1.0.1",
-    "react": "^0.0.0-experimental-f42431abe",
+    "react": "^0.0.0-experimental-241c4467e",
     "react-beautiful-dnd": "^11.0.5",
-    "react-dom": "^0.0.0-experimental-f42431abe",
+    "react-color": "^2.18.0",
+    "react-dom": "^0.0.0-experimental-241c4467e",
     "react-json-pretty": "^2.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
@@ -39,6 +40,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/react": "^9.4.0",
+    "@types/jest": "^25.1.2",
     "babel-eslint": "^10.0.3",
     "babel-plugin-styled-components": "^1.10.6",
     "eslint": "^6.6.0",
