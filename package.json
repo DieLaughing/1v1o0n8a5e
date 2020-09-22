@@ -9,7 +9,7 @@
     "hashids": "^2.1.0",
     "htm": "^2.2.1",
     "num-words": "^1.0.1",
-    "react": "^0.0.0-experimental-241c4467e",
+    "react": "^0.14.0",
     "react-beautiful-dnd": "^11.0.5",
     "react-color": "^2.18.0",
     "react-dom": "^0.0.0-experimental-241c4467e",
