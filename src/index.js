@@ -7,19 +7,19 @@ import * as serviceWorker from "./serviceWorker"
 import htm from "htm"
 
 const html = htm.bind(React.createElement)
-
+*/
 ReactDOM.render(
   <StrictMode>
     <BrowserRouter>
-      {html`
-        <${App} />
-      `}
+    <App />
     </BrowserRouter>
   </StrictMode>,
   document.getElementById("root")
-)
-*/
-
+  )
+  /*
+  {html`
+  <${App} />
+  `}
 ReactDOM.createBlockingRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
@@ -27,7 +27,7 @@ ReactDOM.createBlockingRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </StrictMode>
   )
-
+*/
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
