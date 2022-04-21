@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../settings/ToDo.css'
 import numWords from 'num-words'
 import capitalize from 'capitalize'
-
-const uuidv4 = require('uuid/v4')
+import { v4 as uuidv4 } from "uuid"
 
 // TODO: create an deleted array to store deleted entries and use both array lengths to determine the next index number, for consistency.
 

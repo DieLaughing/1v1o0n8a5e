@@ -17,23 +17,21 @@ const AppWrapper = styled.div`
   min-height: 100vh;
   padding: 0;
   margin: 0;
-  ${width}
-  ${color}
+  ${width};
+  ${color};
 `
 
-const App = props => {
+export const App = props => {
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense fallback={<h1>Loading...</h1>} {...props}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <AppWrapper
           className='App'
           color={theme.global.colors.brand}
           bg={theme.global.colors.bg_silver}
-          {...props}
-          >
+        >
           <SidebarMenu lsKey={"AppName"} items={"1v1o0n8a5e"} />
-          <p>"Test text"</p>
         </AppWrapper>
       </ThemeProvider>
     </Suspense>

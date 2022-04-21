@@ -41,6 +41,6 @@
         "no-unused-vars": "off",
         "no-console": "off",
         "prettier/prettier": "error",
-        "extends": ["plugin:prettier/recommended"]
+        "extends": ["prettier/prettier"]
     }
 }

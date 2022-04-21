@@ -3,7 +3,7 @@ import numWords from "num-words"
 import capitalize from "capitalize"
 
 // @react needs unique keys
-const uuidv4 = require("uuid/v4")
+import { v4 as uuidv4 } from "uuid"
 
 // Pass in the local state name and an array of objects
 const Mangle = (lsKey, items) => {

@@ -2,7 +2,11 @@
   "compilerOptions": {
       "module": "es2015",
       "target": "ES6",
-      "lib": ["es6"]
+      "lib": ["es6"],
+      "baseUrl": ".",
+      "paths": {
+      "@/*":["src/pages/*"]
+      }
   },
   "exclude": [
       "node_modules",

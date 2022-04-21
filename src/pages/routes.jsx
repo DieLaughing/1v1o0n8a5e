@@ -7,10 +7,9 @@ import ToDo from "./ToDo"
 import Mangle from "./Mangle"
 import numWords from "num-words"
 import capitalize from "capitalize"
+import { v4 as uuidv4 } from "uuid"
 
-const uuidv4 = require("uuid/v4")
-
-const mockList = num => {
+function mockList(num) {
   const arr = []
   for (let i = 0; i < num; i++) {
     arr[i] = { ...new Set() }

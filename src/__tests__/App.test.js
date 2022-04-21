@@ -20,19 +20,8 @@ function renderWithRouter(
 }
 
 test('does it render with a <Router>', () => {
-  const {container} = renderWithRouter(<App />)
-  // normally I'd use a data-testid, but just wanted to show this is also possible
-  expect(container.innerHTML).toMatch('Test text')
-})
-
-/*test('rendering a component that uses withRouter', () => {
   const route = '/home'
-  renderWithRouter(<App />, {route})
-  expect(screen.getByTestId('app').textContent).toBe(route)
+  const {container} = renderWithRouter(<App />, {route})
+  // normally I'd use a data-testid, but just wanted to show this is also possible
+  expect(container).toContainHTML(route)
 })
-/*
-it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<App />, div)
-})
-*/

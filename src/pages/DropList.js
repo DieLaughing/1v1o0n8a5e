@@ -39,7 +39,7 @@ const getListStyle = isDraggingOver => ({
   display: "inline-flex",
   padding: grid / 2,
   borderRadius: "3px",
-  overflow: "auto"
+  overflow: "hidden" // Get a nested scroll warning otherwise
 })
 
 const DropList = (lsKey, items) => {
@@ -84,7 +84,7 @@ const DropList = (lsKey, items) => {
             {/* Must check for state.items existence first or Undefined warning */}
             {state.items &&
               state.items.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
+                <Draggable key={item.id} draggableId={JSON.stringify(item.id)} index={index}>
                   {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
