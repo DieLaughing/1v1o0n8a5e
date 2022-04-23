@@ -1,12 +1,11 @@
 {
     "env": {
         "browser": true,
-        "es6": true,
+        "es2020": true,
         "node": true
     },
     "parser": "babel-eslint",
     "parserOptions": {
-        "ecmaVersion": 2020,
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
             "jsx": true
