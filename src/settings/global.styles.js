@@ -1,4 +1,4 @@
-import { css } from "styled-components"
+import { css } from 'styled-components'
 
 export default css`
   body {
@@ -7,15 +7,15 @@ export default css`
     height: 100vh;
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-      "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+      'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
   }
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
   ul {
@@ -30,7 +30,7 @@ export default css`
     border-radius: 3px;
     background: transparent; /*#1b1b25;*/
     &:before {
-      content: "\u200B";
+      content: '\u200B';
     }
   }
   a,
@@ -89,7 +89,8 @@ export default css`
     transition-property: color;
   }
   .text-pulse:focus,
-  .text-pulse:active, .dave {
+  .text-pulse:active,
+  .dave {
     -webkit-animation-name: text-pulse;
     animation-name: text-pulse;
     -webkit-animation-duration: 2.25s;
@@ -111,7 +112,8 @@ export default css`
     user-select: none; /* Non-prefixed version, currently
                         supported by Chrome and Opera */
   }
-  p, h3 {
+  p,
+  h3 {
     width: 10vw;
     border: 0;
     margin: 0;

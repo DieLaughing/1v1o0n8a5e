@@ -1,11 +1,11 @@
-import React, { Suspense } from "react"
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
-import { color, width } from "styled-system"
-import theme from "../settings/theme"
-import resetStyles from "../settings/reset.styles"
-import globalFonts from "../settings/global.fonts"
-import globalStyles from "../settings/global.styles"
-import SidebarMenu from "../components/SidebarMenu"
+import React, { Suspense } from 'react'
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { color, width } from 'styled-system'
+import theme from '../settings/theme'
+import resetStyles from '../settings/reset.styles'
+import globalFonts from '../settings/global.fonts'
+import globalStyles from '../settings/global.styles'
+import SidebarMenu from '../components/SidebarMenu'
 
 const GlobalStyle = createGlobalStyle`
 ${resetStyles}
@@ -21,7 +21,7 @@ const AppWrapper = styled.div`
   ${color};
 `
 
-export const App = props => {
+export const App = (props) => {
   return (
     <Suspense fallback={<h1>Loading...</h1>} {...props}>
       <ThemeProvider theme={theme}>
@@ -31,7 +31,7 @@ export const App = props => {
           color={theme.global.colors.brand}
           bg={theme.global.colors.bg_silver}
         >
-          <SidebarMenu lsKey={"AppName"} items={"1v1o0n8a5e"} />
+          <SidebarMenu lsKey={'AppName'} items={'1v1o0n8a5e'} />
         </AppWrapper>
       </ThemeProvider>
     </Suspense>

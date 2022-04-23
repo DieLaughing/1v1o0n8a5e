@@ -1,16 +1,16 @@
-import React, { useState, useEffect, Fragment } from "react"
-import styled from "styled-components"
-import { color } from "styled-system"
-import { NavLink, Route } from "react-router-dom"
-import theme from "../settings/theme"
-import routes from "../pages/routes"
-import Logo from "../components/Logo"
-import Sidebar from "react-sidebar"
-import useWindowSize from "../hooks/useWindowSize"
+import React, { useState, useEffect, Fragment } from 'react'
+import styled from 'styled-components'
+import { color } from 'styled-system'
+import { NavLink, Route } from 'react-router-dom'
+import theme from '../settings/theme'
+import routes from '../pages/routes'
+import Logo from '../components/Logo'
+import Sidebar from 'react-sidebar'
+import useWindowSize from '../hooks/useWindowSize'
 
 const SidebarHeader = styled.div`
   padding: 34px;
-  font-family: "Aldrich", sans-serif;
+  font-family: 'Aldrich', sans-serif;
   font-size: 1em;
   min-height: 10vh;
   ${color};
@@ -44,7 +44,7 @@ const AppTitle = styled.div`
   flex-direction: row;
   margin: 10px;
   font-weight: 900;
-  font-family: "Aldrich", sans-serif;
+  font-family: 'Aldrich', sans-serif;
   font-size: calc(2.5em + 2vmin);
 `
 
@@ -56,7 +56,7 @@ const Button = styled.button`
   ${color}
 `
 const SearchField = styled.input`
-  font-family: "Aldrich", sans-serif;
+  font-family: 'Aldrich', sans-serif;
   font-size: 4rem;
   text-align: left;
   border: 0;
@@ -80,8 +80,8 @@ const SidebarMenu = ({ lsKey, items, ...props }) => {
       setState(list || items)
       setList(list)
     }
-    if (state === "") {
-      localStorage.setItem(lsKey, JSON.stringify("1v1o0n8a5e"))
+    if (state === '') {
+      localStorage.setItem(lsKey, JSON.stringify('1v1o0n8a5e'))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -92,7 +92,7 @@ const SidebarMenu = ({ lsKey, items, ...props }) => {
 
     for (let i = 0; i < keyName.length; i++) {
       if (keyName[i] === state) {
-        console.log("SAME")
+        console.log('SAME')
         // TODO: Put Easter Egg search here
       }
     }
@@ -108,8 +108,8 @@ const SidebarMenu = ({ lsKey, items, ...props }) => {
     return t
   }
 
-  const nameWidth = size.width - size.width / 2 + "px"
-  const onChange = event => setState(event.target.value)
+  const nameWidth = size.width - size.width / 2 + 'px'
+  const onChange = (event) => setState(event.target.value)
 
   const markActive = (match, location) => {
     if (!match) {
@@ -123,21 +123,21 @@ const SidebarMenu = ({ lsKey, items, ...props }) => {
       sidebar={
         <div
           style={{
-            textAlign: "center",
-            margin: "0",
-            paddingTop: "1rem",
-            fontFamily: "Electrolize",
-            fontSize: "1.5em",
+            textAlign: 'center',
+            margin: '0',
+            paddingTop: '1rem',
+            fontFamily: 'Electrolize',
+            fontSize: '1.5em',
             background: theme.global.colors.fill_gray,
-            height: "100vh",
-            overflow: "hidden"
+            height: '100vh',
+            overflow: 'hidden',
           }}
           {...props}
         >
           <SidebarHeader>v0.1.0</SidebarHeader>
           <ul>
-            {routes.map(route => {
-              if (route.path === "/") {
+            {routes.map((route) => {
+              if (route.path === '/') {
                 return <Fragment key={route.id}></Fragment>
               } else {
                 return (
@@ -161,13 +161,13 @@ const SidebarMenu = ({ lsKey, items, ...props }) => {
       styles={{
         sidebar: {
           top: null,
-          width: "10vw",
-          minWidth: "185px",
+          width: '10vw',
+          minWidth: '185px',
           backgroundColor: theme.global.colors.fill_gray,
-          margin: "0",
-          padding: "0",
-          overflow: "hidden"
-        }
+          margin: '0',
+          padding: '0',
+          overflow: 'hidden',
+        },
       }}
       docked={sidebarDocked}
       open={open}
@@ -193,7 +193,7 @@ const SidebarMenu = ({ lsKey, items, ...props }) => {
         </AppTitle>
       </AppHeader>
       <SidebarBody>
-        {routes.map(route => (
+        {routes.map((route) => (
           <Route
             key={route.id}
             path={route.path}

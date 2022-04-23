@@ -13,7 +13,7 @@ const HomeHeader = styled.div`
   padding-right: 1rem;
   padding-bottom: 1rem;
   width: 35rem;
-  font-family: "Electrolize", sans-serif;
+  font-family: 'Electrolize', sans-serif;
   font-size: 2rem;
   margin: 1rem auto;
 `

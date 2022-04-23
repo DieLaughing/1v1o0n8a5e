@@ -97,6 +97,6 @@ export default {
       stroke_gray: '#AAAAAA',
       stroke_silver: '#DDDDDD',
       stroke_black: '#111111',
-    }
-  }
+    },
+  },
 }

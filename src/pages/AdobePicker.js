@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import Marker from '../components/Marker'
-import Colorwheel from './Colorwheel'
+import React, { Component } from "react"
+import Marker from "../components/Marker"
+import Colorwheel from "./Colorwheel"
 
 class AdobePicker extends Component {
   constructor(props) {
@@ -8,19 +8,19 @@ class AdobePicker extends Component {
     this.handleMouseMove = this.handleMouseMove.bind(this)
     this.state = { x: 684, y: 380 }
   }
-  
+
   handleMouseMove(event) {
     event.preventDefault()
     this.setState({
       x: event.clientX,
-      y: event.clientY
+      y: event.clientY,
     })
   }
-  
-  getOffset( el ) {
+
+  getOffset(el) {
     var _x = 0
     var _y = 0
-    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
+    while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
       _x += el.offsetLeft - el.scrollLeft
       _y += el.offsetTop - el.scrollTop
       el = el.offsetParent
@@ -30,16 +30,23 @@ class AdobePicker extends Component {
 
   render() {
     return (
-      <div onClick={this.handleMouseMove} style={{
-        position: 'fixed',
-        top: 'calc(50vh - 215px)',
-        left: 'calc(50vw - 215px)',
-        width: '434px',
-        height: '436px',
-        overflow: 'visible'
-      }}>
+      <div
+        onClick={this.handleMouseMove}
+        style={{
+          position: "fixed",
+          top: "calc(50vh - 215px)",
+          left: "calc(50vw - 215px)",
+          width: "434px",
+          height: "436px",
+          overflow: "visible",
+        }}
+      >
         <Colorwheel />
-        <Marker x={this.state.x} y={this.state.y} offset={{top: 172, left: 465}} />
+        <Marker
+          x={this.state.x}
+          y={this.state.y}
+          offset={{ top: 172, left: 465 }}
+        />
       </div>
     )
   }

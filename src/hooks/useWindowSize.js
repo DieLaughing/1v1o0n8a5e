@@ -18,7 +18,7 @@ export const useWindowSize = () => {
   function getSize() {
     return {
       width: isClient ? window.innerWidth : undefined,
-      height: isClient ? window.innerHeight : undefined
+      height: isClient ? window.innerHeight : undefined,
     }
   }
 
@@ -28,11 +28,11 @@ export const useWindowSize = () => {
     if (!isClient) {
       return false
     }
-    
+
     function handleResize() {
       setWindowSize(getSize())
     }
-    
+
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,14 +1,17 @@
 import React from 'react'
-import {Router} from 'react-router-dom'
-import {createMemoryHistory} from 'history'
-import {render} from '@testing-library/react'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
+import { render } from '@testing-library/react'
 import App from '../components/App'
 
 // this is a handy function that I would utilize for any component
 // that relies on the router being in context
 function renderWithRouter(
   ui,
-  {route = '/', history = createMemoryHistory({initialEntries: [route]})} = {},
+  {
+    route = '/',
+    history = createMemoryHistory({ initialEntries: [route] }),
+  } = {}
 ) {
   return {
     ...render(<Router history={history}>{ui}</Router>),
@@ -21,7 +24,7 @@ function renderWithRouter(
 
 test('does it render with a <Router>', () => {
   const route = '/home'
-  const {container} = renderWithRouter(<App />, {route})
+  const { container } = renderWithRouter(<App />, { route })
   // normally I'd use a data-testid, but just wanted to show this is also possible
   expect(container).toContainHTML(route)
 })

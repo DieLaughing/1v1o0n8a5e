@@ -1,13 +1,13 @@
-import React from "react"
-import { Redirect } from "react-router-dom"
+import React from 'react'
+import { Redirect } from 'react-router-dom'
 import Home from './Home'
-import ThemePicker from "../components/ThemePicker"
-import DropList from "./DropList"
-import ToDo from "./ToDo"
-import Mangle from "./Mangle"
-import numWords from "num-words"
-import capitalize from "capitalize"
-import { v4 as uuidv4 } from "uuid"
+import ThemePicker from '../components/ThemePicker'
+import DropList from './DropList'
+import ToDo from './ToDo'
+import Mangle from './Mangle'
+import numWords from 'num-words'
+import capitalize from 'capitalize'
+import { v4 as uuidv4 } from 'uuid'
 
 function mockList(num) {
   const arr = []
@@ -24,51 +24,51 @@ function mockList(num) {
 export default [
   {
     id: 1,
-    path: "/",
+    path: '/',
     exact: true,
-    main: () => <Redirect to='/home' />
+    main: () => <Redirect to='/home' />,
   },
   {
     id: 2,
-    path: "/home",
+    path: '/home',
     exact: true,
-    sidebar: "Home",
-    main: () => <Home />
+    sidebar: 'Home',
+    main: () => <Home />,
   },
   {
     id: 3,
-    path: "/todo",
-    sidebar: "Todo",
-    main: () => ToDo("ToDoList", mockList(5))
+    path: '/todo',
+    sidebar: 'Todo',
+    main: () => ToDo('ToDoList', mockList(5)),
   },
   {
     id: 4,
-    path: "/droplist",
-    sidebar: "Drop List",
-    main: () => DropList("DropList", mockList(9))
+    path: '/droplist',
+    sidebar: 'Drop List',
+    main: () => DropList('DropList', mockList(9)),
   },
   {
     id: 5,
-    path: "/color",
-    sidebar: "Color",
-    main: () => <ThemePicker />
+    path: '/color',
+    sidebar: 'Color',
+    main: () => <ThemePicker />,
   },
   {
     id: 6,
-    path: "/mangle",
-    sidebar: "Mangle",
-    main: () => Mangle("MangleList", mockList(7))
+    path: '/mangle',
+    sidebar: 'Mangle',
+    main: () => Mangle('MangleList', mockList(7)),
   },
   {
     id: 7,
-    path: "/about",
-    sidebar: "About",
+    path: '/about',
+    sidebar: 'About',
     main: () => (
       <div>
-        <h1 style={{ fontFamily: "Electrolize", fontSize: "1.85em" }}>About</h1>
+        <h1 style={{ fontFamily: 'Electrolize', fontSize: '1.85em' }}>About</h1>
         <br />
         More blank pages. This is the 'About J. Adam Moore' page.
       </div>
-    )
-  }
+    ),
+  },
 ]

@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react'
 import '../settings/ToDo.css'
 import numWords from 'num-words'
 import capitalize from 'capitalize'
-import { v4 as uuidv4 } from "uuid"
+import { v4 as uuidv4 } from 'uuid'
 
 // TODO: create an deleted array to store deleted entries and use both array lengths to determine the next index number, for consistency.
 
 function ToDo(lsKey, items) {
-
   // Check if data exists, then load it, or use default data.
-  const [list, setList] = useState(JSON.parse(localStorage.getItem(lsKey)) || items)
+  const [list, setList] = useState(
+    JSON.parse(localStorage.getItem(lsKey)) || items
+  )
   const [state, setState] = useState(list || items)
 
   useEffect(() => {
@@ -45,9 +46,9 @@ function ToDo(lsKey, items) {
 
     newList[len] = {
       key: uuidv4(),
-      content: capitalize.words(numWords(lasti+1)),
-      id: lasti+1,
-      isCompleted: false
+      content: capitalize.words(numWords(lasti + 1)),
+      id: lasti + 1,
+      isCompleted: false,
     }
     setState({ items: newList })
   }
@@ -88,8 +89,8 @@ function ToDo(lsKey, items) {
                 <input
                   type='text'
                   value={todo.content}
-                  onKeyDown={e => handleKeyDown(e, i)}
-                  onChange={e => updateTodoAtIndex(e, i)}
+                  onKeyDown={(e) => handleKeyDown(e, i)}
+                  onChange={(e) => updateTodoAtIndex(e, i)}
                 />
               </div>
             ))}

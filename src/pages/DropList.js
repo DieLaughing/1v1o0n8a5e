@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
+import React, { useState, useEffect } from 'react'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 // fake data generator to show data shape
 // Array must not have an id: 0 for react-beautiful-dnd to work
@@ -22,24 +22,24 @@ const reorder = (list, startIndex, endIndex) => {
 const grid = 8
 
 const getItemStyle = (isDragging, draggableStyle) => ({
-  userSelect: "none",
+  userSelect: 'none',
   padding: grid * 2,
   margin: `0 ${grid}px 0 0`,
-  borderRadius: "3px",
-  background: isDragging ? "#1b1b25" : "#17171f",
-  color: isDragging ? "#7FDBFF" : "#007BE6",
-  transition: "color .2s",
+  borderRadius: '3px',
+  background: isDragging ? '#1b1b25' : '#17171f',
+  color: isDragging ? '#7FDBFF' : '#007BE6',
+  transition: 'color .2s',
   // eslint-disable-next-line
   ...draggableStyle
 })
 
-const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? "#a09fa0" : "#6d6c6e",
-  transition: "background .4s",
-  display: "inline-flex",
+const getListStyle = (isDraggingOver) => ({
+  background: isDraggingOver ? '#a09fa0' : '#6d6c6e',
+  transition: 'background .4s',
+  display: 'inline-flex',
   padding: grid / 2,
-  borderRadius: "3px",
-  overflow: "hidden" // Get a nested scroll warning otherwise
+  borderRadius: '3px',
+  overflow: 'hidden', // Get a nested scroll warning otherwise
 })
 
 const DropList = (lsKey, items) => {
@@ -60,7 +60,7 @@ const DropList = (lsKey, items) => {
     localStorage.setItem(lsKey, JSON.stringify(state))
   }, [state, lsKey])
 
-  const onDragEnd = result => {
+  const onDragEnd = (result) => {
     // dropped outside the list
     if (!result.destination) {
       return
@@ -69,7 +69,7 @@ const DropList = (lsKey, items) => {
     items = reorder(state.items, result.source.index, result.destination.index)
 
     setState({
-      items
+      items,
     })
   }
 
@@ -84,7 +84,11 @@ const DropList = (lsKey, items) => {
             {/* Must check for state.items existence first or Undefined warning */}
             {state.items &&
               state.items.map((item, index) => (
-                <Draggable key={item.id} draggableId={JSON.stringify(item.id)} index={index}>
+                <Draggable
+                  key={item.id}
+                  draggableId={JSON.stringify(item.id)}
+                  index={index}
+                >
                   {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}

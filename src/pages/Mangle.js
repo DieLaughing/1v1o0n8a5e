@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react"
-import numWords from "num-words"
-import capitalize from "capitalize"
+import React, { useEffect, useState } from 'react'
+import numWords from 'num-words'
+import capitalize from 'capitalize'
 
 // @react needs unique keys
-import { v4 as uuidv4 } from "uuid"
+import { v4 as uuidv4 } from 'uuid'
 
 // Pass in the local state name and an array of objects
 const Mangle = (lsKey, items) => {
@@ -35,15 +35,15 @@ const Mangle = (lsKey, items) => {
         key: uuidv4(),
         id: lasti + 1,
         content: capitalize.words(numWords(lasti + 1)),
-        isCompleted: false
-      }
+        isCompleted: false,
+      },
     ]
     setState({ items: newState })
   }
 
   function del(itemToDelete) {
     const newState = [...state.items]
-    let newArr = newState.filter(function(item) {
+    let newArr = newState.filter(function (item) {
       return item !== itemToDelete
     })
     setState({ items: newArr })
@@ -51,7 +51,7 @@ const Mangle = (lsKey, items) => {
 
   function toggle(itemToToggle) {
     const newState = [...state.items]
-    let newArr = newState.filter(function(item) {
+    let newArr = newState.filter(function (item) {
       if (item === itemToToggle) {
         item.isCompleted = !item.isCompleted
       }
@@ -70,18 +70,18 @@ const Mangle = (lsKey, items) => {
         <button onClick={() => clr()}>Reset</button>
         <button onClick={() => adds()}>+</button>
       </span>
-      <div style={{ margin: "1rem" }}></div>
+      <div style={{ margin: '1rem' }}></div>
       <div
-        key={"div-king1"}
+        key={'div-king1'}
         style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyItems: "center",
-          alignItems: "center",
-          alignContent: "center",
-          justifyContent: "space-evenly",
-          width: "auto",
-          margin: "auto"
+          display: 'flex',
+          flexDirection: 'row',
+          justifyItems: 'center',
+          alignItems: 'center',
+          alignContent: 'center',
+          justifyContent: 'space-evenly',
+          width: 'auto',
+          margin: 'auto',
         }}
       >
         <h3>Items: </h3>
@@ -95,14 +95,14 @@ const Mangle = (lsKey, items) => {
           <div
             key={item.key}
             style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyItems: "center",
-              alignItems: "center",
-              alignContent: "center",
-              justifyContent: "space-evenly",
-              width: "auto",
-              margin: "auto"
+              display: 'flex',
+              flexDirection: 'row',
+              justifyItems: 'center',
+              alignItems: 'center',
+              alignContent: 'center',
+              justifyContent: 'space-evenly',
+              width: 'auto',
+              margin: 'auto',
             }}
           >
             <p>
@@ -115,10 +115,10 @@ const Mangle = (lsKey, items) => {
               {item.isCompleted ? (
                 <button
                   style={{
-                    display: "flex",
-                    color: "whitesmoke",
-                    background: "#005500",
-                    width: "auto"
+                    display: 'flex',
+                    color: 'whitesmoke',
+                    background: '#005500',
+                    width: 'auto',
                   }}
                   onClick={() => toggle(item)}
                 >
@@ -127,8 +127,8 @@ const Mangle = (lsKey, items) => {
               ) : (
                 <button
                   style={{
-                    display: "flex",
-                    width: "auto"
+                    display: 'flex',
+                    width: 'auto',
                   }}
                   onClick={() => toggle(item)}
                 >

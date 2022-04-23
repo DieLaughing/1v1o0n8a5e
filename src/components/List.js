@@ -8,15 +8,23 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
     value: `item-${k}`,
   }))*/
 
-const projects = [{id:1, content: 'one'},{id:2, content: 'two'},{id:3, content: 'three'},{id:4, content: 'four'},{id:5, content: 'five'},{id:6, content: 'six'},{id:7, content: 'seven'},{id:8, content: 'eight'}]
-
+const projects = [
+  { id: 1, content: 'one' },
+  { id: 2, content: 'two' },
+  { id: 3, content: 'three' },
+  { id: 4, content: 'four' },
+  { id: 5, content: 'five' },
+  { id: 6, content: 'six' },
+  { id: 7, content: 'seven' },
+  { id: 8, content: 'eight' },
+]
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list)
   const [removed] = result.splice(startIndex, 1)
   result.splice(endIndex, 0, removed)
-  
+
   return result
 }
 
@@ -34,16 +42,16 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   ...draggableStyle,
 })
 
-const getListStyle = isDraggingOver => ({
+const getListStyle = (isDraggingOver) => ({
   background: isDraggingOver ? '#a09fa0' : '#6d6c6e',
   transition: 'background .4s',
   display: 'inline-flex',
   padding: grid / 2,
   borderRadius: '3px',
-  overflow: 'auto'
+  overflow: 'auto',
 })
 
-const useStateWithLocalStorage = localStorageKey => {
+const useStateWithLocalStorage = (localStorageKey) => {
   const [value, setValue] = useState(
     localStorage.getItem(localStorageKey) || ''
   )
@@ -55,21 +63,19 @@ const useStateWithLocalStorage = localStorageKey => {
 }
 
 const List = () => {
-  
-  const [ value, setValue ] = useStateWithLocalStorage('ProjectList')
-  const [ state, setState ] = useState({items: projects})
+  const [value, setValue] = useStateWithLocalStorage('ProjectList')
+  const [state, setState] = useState({ items: projects })
 
-  if(value !== null && value !== state) {
+  if (value !== null && value !== state) {
     setState(value)
   }
 
   const onDragEnd = (result) => {
-    
     // dropped outside the list
     if (!result.destination) {
       return
     }
-    
+
     const items = reorder(
       state.items,
       result.source.index,

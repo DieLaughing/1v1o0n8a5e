@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "private": false,
   "dependencies": {
+    "ajv": "^8.11.0",
     "capitalize": "^2.0.3",
     "chroma-js": "^2.1.0",
     "constate": "^3.0.1",

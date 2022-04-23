@@ -1,9 +1,9 @@
 //import React, { StrictMode } from "react"
 import React from 'react'
-import { render } from "react-dom"
-import { BrowserRouter } from "react-router-dom"
-import { App } from "./components/App"
-import * as serviceWorker from "./serviceWorker"
+import { render } from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+import { App } from './components/App'
+import * as serviceWorker from './serviceWorker'
 /*
 import htm from "htm"
 
@@ -32,13 +32,13 @@ ReactDOM.createBlockingRoot(document.getElementById('root')).render(
 
 render(
   //<StrictMode>
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
   //</StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 )
-  
+
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
