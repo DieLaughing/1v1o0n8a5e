@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-      "module": "es2015",
-      "target": "ES6",
-      "lib": ["es6"],
+      "module": "es2020",
+      "target": "ES2020",
+      "lib": ["es2020"],
       "baseUrl": ".",
       "paths": {
       "@/*":["src/pages/*"]
