@@ -8,6 +8,7 @@ import Mangle from './Mangle'
 import numWords from 'num-words'
 import capitalize from 'capitalize'
 import { v4 as uuidv4 } from 'uuid'
+import FileAccess from './FileAccess'
 
 function mockList(num) {
   const arr = []
@@ -61,6 +62,12 @@ export default [
   },
   {
     id: 7,
+    path: '/files',
+    sidebar: 'Files',
+    main: () => <FileAccess />,
+  },
+  {
+    id: 8,
     path: '/about',
     sidebar: 'About',
     main: () => (

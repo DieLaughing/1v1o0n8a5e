@@ -1,5 +1,5 @@
 //import React, { StrictMode } from "react"
-import React from 'react'
+import React, { StrictMode } from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { App } from './components/App'
@@ -31,11 +31,11 @@ ReactDOM.createBlockingRoot(document.getElementById('root')).render(
 */
 
 render(
-  //<StrictMode>
+  <StrictMode>
   <BrowserRouter>
     <App />
   </BrowserRouter>,
-  //</StrictMode>,
+  </StrictMode>,
   document.getElementById('root')
 )
 

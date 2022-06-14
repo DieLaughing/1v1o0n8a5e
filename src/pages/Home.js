@@ -12,7 +12,7 @@ const HomeHeader = styled.div`
   padding-top: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
-  width: 35rem;
+  width: 65vw;
   font-family: 'Electrolize', sans-serif;
   font-size: 2rem;
   margin: 1rem auto;
@@ -33,7 +33,7 @@ const Home = () => {
                 data={value}
                 theme={JSONPrettyMon}
                 space='2'
-                style={{ width: '35vw', margin: '0 auto' }}
+                style={{ width: '50vw', margin: 'auto' }}
               ></JSONPretty>
             </span>
           ) : null
@@ -61,7 +61,7 @@ const Home = () => {
             data={value}
             theme={JSONPrettyMon}
             space='2'
-            style={{ width: '35vw', margin: '0 auto' }}
+            style={{ width: '50vw', margin: 'auto' }}
           ></JSONPretty>
         </span>
       ))}

@@ -21,7 +21,7 @@ export default css`
   h6,
   pre,
   code {
-    font-size: 1em;
+    font-size: 1.6em;
   }
   ul,
   ol,

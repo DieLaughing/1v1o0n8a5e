@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Marker from "../components/Marker"
-import Colorwheel from "./Colorwheel"
+import ColorWheel from "./ColorWheel"
 
 class AdobePicker extends Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class AdobePicker extends Component {
           overflow: "visible",
         }}
       >
-        <Colorwheel />
+        <ColorWheel />
         <Marker
           x={this.state.x}
           y={this.state.y}

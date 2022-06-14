@@ -60,7 +60,9 @@ const SearchField = styled.input`
   font-size: 4rem;
   text-align: left;
   border: 0;
-  color: ${theme.global.colors.search};
+  /*color: ${theme.global.colors.search};*/
+  transition: color 0.2s;
+  color: #265c83;
   background-color: transparent;
 `
 

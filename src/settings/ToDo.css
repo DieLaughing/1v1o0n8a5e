@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: left;
   justify-content: left;
-  color: white;
+  color: papayawhip;
 }
 
 .todo {
@@ -31,7 +31,7 @@
 
 .todo-is-completed .checkbox {
   color: #000;
-  background: #fff;
+  background: #cecece;
 }
 
 .todo-is-completed input {

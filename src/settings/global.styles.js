@@ -17,6 +17,7 @@ export default css`
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
+      padding: 50px auto;
   }
   ul {
     list-style-type: none;
@@ -35,7 +36,6 @@ export default css`
   }
   a,
   link,
-  input,
   .logo {
     transition: color 0.2s;
     color: #265c83;
@@ -64,6 +64,33 @@ export default css`
   .navselect:hover {
     transition: color 0.2s;
     color: #7fdbff;
+  }
+  label input[type="file"] {
+        position: absolute;
+        top: -1000px;
+        overflow: hidden;
+        color: rgba(0, 0, 0, 0);
+  }
+  .label {
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 5px;
+    background: #dddddd;
+    display: inline-block;
+  }
+  .label:hover {
+    background: #7fdbff;
+  }
+  .label:active {
+    background: #9fa1a0;
+  }
+  .label:invalid + span {
+    color: #000000;
+  }
+  .label:valid + span {
+    color:  #265c83;
   }
   /* Text Pulse */
   @-webkit-keyframes text-pulse {
@@ -111,6 +138,18 @@ export default css`
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently
                         supported by Chrome and Opera */
+  }
+  /* For non-natively-focusable elements. For natively focusable elements */
+  /* Use .visually-hidden:not(:focus):not(:active) */
+  .visually-hidden {
+    border-width: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
   }
   p,
   h3 {
